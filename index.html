@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFTAI 具身升维科技 商业计划书 (Pitch Deck)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Urbanist:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CSS RESET & VARIABLES */
+        :root {
+            --color-bg-deep: #030712;
+            --color-bg-card: rgba(17, 24, 39, 0.7);
+            --color-primary: #38bdf8; /* Sky Blue */
+            --color-secondary: #06b6d4; /* Cyan */
+            --color-accent: #8b5cf6; /* Royal Purple */
+            --color-text-bright: #f9fafb;
+            --color-text-muted: #9ca3af;
+            --color-border: rgba(56, 189, 248, 0.15);
+            --color-border-active: rgba(56, 189, 248, 0.5);
+            --font-display: 'Urbanist', 'Space Grotesk', 'Noto Sans SC', sans-serif;
+            --font-body: 'Noto Sans SC', sans-serif;
+            /* --font-display: Arial, 'Noto Sans SC', sans-serif;
+            --font-body: Arial, 'Noto Sans SC', sans-serif; */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--color-bg-deep);
+            color: var(--color-text-bright);
+            font-family: var(--font-body);
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        /* FIXED ASPECT RATIO CANVAS (16:9 - 1280x720) */
+        #deck-viewport {
+            width: 1280px;
+            height: 720px;
+            background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
+                        radial-gradient(circle at 10% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+                        #020617;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            transform-origin: center center;
+        }
+
+        /* PRESENTATION CONTROL BAR */
+        #control-bar {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--color-border);
+            padding: 8px 20px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 100;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: opacity 0.3s;
+        }
+
+        #control-bar:hover {
+            opacity: 1;
+        }
+
+        .btn-ctrl {
+            background: none;
+            border: none;
+            color: var(--color-text-bright);
+            cursor: pointer;
+            font-size: 16px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .btn-ctrl:hover {
+            background: rgba(56, 189, 248, 0.2);
+            color: var(--color-primary);
+        }
+
+        #slide-indicator {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--color-text-muted);
+            min-width: 60px;
+            text-align: center;
+        }
+
+        /* SLIDES WRAPPER */
+        #slides-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease-in-out, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: scale(0.98);
+            padding: 60px 80px 100px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #020617;
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+
+        /* SLIDE COMMON HEADER */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .slide-title-group h2 {
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #ffffff, var(--color-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-family: var(--font-display);
+            border-left: 8px solid var(--color-primary);
+            padding-left: 15px;
+        }
+
+        .slide-title-group h2 i {
+            color: var(--color-primary);
+            font-size: 26px;
+        }
+
+        .slide-subtitle-en {
+            font-family: var(--font-display);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            margin-top: 4px;
+            padding-left: 23px;
+        }
+
+        .slide-logo {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+            color: var(--color-text-bright);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(56, 189, 248, 0.05);
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--color-border);
+        }
+
+        .slide-logo span {
+            color: var(--color-primary);
+        }
+
+        .slide-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 0;
+        }
+
+        /* FOOTER BRANDING */
+        .slide-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.03);
+            padding-top: 10px;
+        }
+
+        .slide-footer-left {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* LAYOUT UTILITIES */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        /* CARD STYLE */
+        .tech-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tech-card:hover {
+            border-color: var(--color-border-active);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .tech-card:hover::before {
+            opacity: 1;
+        }
+
+        .hl {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        /* COVER SLIDE STYLE */
+        .cover-layout {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-badge {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .cover-title {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+            background: linear-gradient(to right, #ffffff, #93c5fd, var(--color-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: var(--font-display);
+        }
+
+        .cover-subtitle {
+            font-size: 24px;
+            color: #e2e8f0;
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .cover-meta {
+            display: flex;
+            gap: 40px;
+            font-size: 14px;
+            color: var(--color-text-muted);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 24px;
+            width: 80%;
+            justify-content: center;
+        }
+
+        .cover-meta-item strong {
+            color: var(--color-text-bright);
+        }
+
+        /* TEAM GRID SECTION */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .member-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .member-card.active, .member-card:hover {
+            border-color: var(--color-primary);
+            background: rgba(56, 189, 248, 0.05);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+        }
+
+        .avatar-placeholder {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(139, 92, 246, 0.2));
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(56, 189, 248, 0.3);
+            font-size: 32px;
+            color: var(--color-primary);
+        }
+
+        .member-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-text-bright);
+            margin-bottom: 4px;
+        }
+
+        .member-role {
+            font-size: 14px;
+            color: var(--color-accent);
+            font-family: var(--font-display);
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .member-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .m-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: var(--color-text-muted);
+        }
+
+        /* INTERACTIVE SIMULATOR */
+        .simulator-box {
+            background: #0f172a;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sim-grid-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 1;
+        }
+
+        .robotic-canvas-simulation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .sim-panel-controls {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .btn-sim {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-sim:hover {
+            background: var(--color-primary);
+            color: #000;
+        }
+
+        .media-placeholder {
+            background: #090d1a;
+            border: 2px dashed var(--color-border);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-primary);
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .media-placeholder i {
+            font-size: 44px;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        /* ROADMAP TIMELINE (SLIDE 11) */
+        .roadmap-timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            position: relative;
+            padding-top: 36px;
+            width: 100%;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 8%;
+            right: 8%;
+            height: 2px;
+            background: linear-gradient(to right, var(--color-primary), var(--color-accent), #22c55e);
+            opacity: 0.35;
+        }
+
+        .roadmap-phase {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 30px 22px 22px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .roadmap-phase:hover {
+            transform: translateY(-4px);
+            border-color: var(--phase-color, var(--color-primary));
+            box-shadow: 0 12px 28px -12px var(--phase-color, var(--color-primary));
+        }
+
+        .roadmap-phase-marker {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--color-bg-deep);
+            border: 2px solid var(--phase-color, var(--color-primary));
+            color: var(--phase-color, var(--color-primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 15px;
+            z-index: 2;
+            box-shadow: 0 0 0 4px var(--color-bg-deep);
+        }
+
+        .roadmap-phase-time {
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--phase-color, var(--color-primary));
+            font-weight: 600;
+        }
+
+        .roadmap-phase-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #f1f5f9;
+            line-height: 1.3;
+            margin-top: 4px;
+        }
+
+        .roadmap-phase-subhead {
+            font-size: 11px;
+            color: var(--color-text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-family: var(--font-display);
+            margin-top: 6px;
+        }
+
+        .roadmap-phase-list {
+            list-style: none;
+            margin: 0;
+            padding: 14px 0 0 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .roadmap-phase-list li {
+            position: relative;
+            padding-left: 22px;
+            font-size: 13px;
+            color: #cbd5e1;
+            line-height: 1.55;
+        }
+
+        .roadmap-phase-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 3px;
+            font-size: 10px;
+            color: var(--phase-color, var(--color-primary));
+        }
+
+        /* ROADMAP TAB-BTN PANEL */
+        .milestone-content-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--color-primary);
+            border-radius: 12px;
+            padding: 30px;
+            min-height: 200px;
+        }
+
+        .milestone-subheading {
+            font-size: 13px;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            font-family: var(--font-display);
+        }
+
+        /* DONUT CHART */
+        .donut-chart-container {
+            position: relative;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .donut-svg {
+            transform: rotate(-90deg);
+            width: 300px;
+            height: 300px;
+            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.15));
+        }
+
+        /* SLIDE 10: FUNDING / BUDGET LAYOUT */
+        .budget-grid {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 50px;
+            align-items: center;
+            height: 100%;
+        }
+
+        .funding-label-box {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            text-align: center;
+        }
+
+        .funding-total-num {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(to right, #ffffff, var(--color-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .funding-total-sub {
+            margin-top: 10px;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            font-family: var(--font-display);
+        }
+
+        .budget-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .budget-list-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 18px 12px 22px;
+            background: var(--color-bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .budget-list-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent, var(--color-primary));
+        }
+
+        .budget-list-item:hover {
+            transform: translateX(4px);
+            border-color: rgba(255, 255, 255, 0.14);
+            background: rgba(17, 24, 39, 0.9);
+        }
+
+        .budget-item-num {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--accent, var(--color-primary));
+            margin-right: 8px;
+            min-width: 18px;
+        }
+
+        .budget-item-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #f1f5f9;
+            line-height: 1.3;
+        }
+
+        .budget-item-sub {
+            display: block;
+            margin-top: 3px;
+            font-size: 11.5px;
+            color: var(--color-text-muted);
+            line-height: 1.35;
+        }
+
+        .budget-item-value {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .budget-item-pct {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .budget-item-amount {
+            display: block;
+            font-size: 11.5px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+
+
+        /* NEW DECK ADDITIONS: SCALING INFRA NARRATIVE */
+        .big-statement {
+            font-family: var(--font-display);
+            font-size: 30px;
+            line-height: 1.25;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.4px;
+        }
+        .statement-muted {
+            color: var(--color-text-muted);
+            font-size: 15px;
+            line-height: 1.65;
+            margin-top: 14px;
+        }
+        .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .pill {
+            border: 1px solid var(--color-border);
+            background: rgba(56,189,248,0.06);
+            color: #dbeafe;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-family: var(--font-display);
+            letter-spacing: .5px;
+        }
+        .flow-lane {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .flow-node {
+            flex: 1;
+            min-height: 88px;
+            background: rgba(15,23,42,0.85);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 16px 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .flow-node strong {
+            font-size: 16px;
+            color: #fff;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .flow-node span {
+            font-size: 11.5px;
+            line-height: 1.4;
+            color: var(--color-text-muted);
+        }
+        .flow-arrow { color: var(--color-primary); font-size: 18px; opacity: .9; }
+        .missing-box {
+            background: linear-gradient(135deg, rgba(56,189,248,.12), rgba(139,92,246,.12));
+            border: 1px solid rgba(56,189,248,.35);
+            box-shadow: 0 0 35px rgba(56,189,248,.08);
+        }
+        .flywheel {
+            width: 430px; height: 430px; margin: 0 auto; position: relative;
+            border-radius: 50%;
+            border: 1px dashed rgba(56,189,248,.22);
+            background: radial-gradient(circle, rgba(56,189,248,.08), transparent 62%);
+        }
+        .flywheel-center {
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+            width: 165px; height: 165px; border-radius: 50%;
+            background: rgba(15,23,42,.95); border: 1px solid var(--color-primary);
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            font-family: var(--font-display); font-weight: 700; color: #fff; padding: 20px;
+            box-shadow: 0 0 30px rgba(56,189,248,.16);
+        }
+        .flywheel-node {
+            position: absolute; width: 132px; min-height: 66px;
+            background: rgba(17,24,39,.92); border: 1px solid var(--color-border);
+            border-radius: 12px; padding: 12px 10px; text-align: center;
+            font-size: 12px; color: #cbd5e1; line-height: 1.35;
+        }
+        .flywheel-node strong { color: #fff; display: block; font-size: 13px; margin-bottom: 4px; }
+        .n1 { left: 149px; top: -20px; } .n2 { right: -18px; top: 98px; }
+        .n3 { right: 12px; bottom: 55px; } .n4 { left: 12px; bottom: 55px; }
+        .n5 { left: -18px; top: 98px; }
+        .metric-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 22px; }
+        .metric { background: rgba(15,23,42,.8); border:1px solid var(--color-border); border-radius:12px; padding:16px; text-align:center; }
+        .metric strong { font-size: 25px; font-family:var(--font-display); color:var(--color-primary); display:block; }
+        .metric span { font-size: 11px; color: var(--color-text-muted); line-height: 1.4; }
+        .mini-label { font-family: var(--font-display); color: var(--color-accent); text-transform: uppercase; letter-spacing: 1.5px; font-size: 11px; margin-bottom: 10px; }
+        .check-list { list-style: none; padding:0; margin: 0; display:flex; flex-direction:column; gap:10px; }
+        .check-list li { position: relative; padding-left: 24px; color:#cbd5e1; font-size: 14px; line-height: 1.5; }
+        .check-list li::before { content:'\f00c'; font-family:'Font Awesome 6 Free'; font-weight:900; position:absolute; left:0; top:2px; color:var(--color-primary); font-size:11px; }
+        .x-list { list-style: none; padding:0; margin: 0; display:flex; flex-direction:column; gap:10px; }
+        .x-list li { position: relative; padding-left: 24px; color:#cbd5e1; font-size: 14px; line-height: 1.5; }
+        .x-list li::before { content:'\f00d'; font-family:'Font Awesome 6 Free'; font-weight:900; position:absolute; left:0; top:2px; color:#ef4444; font-size:12px; }
+        .arch-grid { display:grid; grid-template-columns: repeat(6,1fr); gap:12px; align-items:stretch; }
+        .arch-block { background:rgba(15,23,42,.85); border:1px solid var(--color-border); border-radius:12px; padding:18px 12px; text-align:center; min-height:130px; display:flex; flex-direction:column; justify-content:center; }
+        .arch-block i { color:var(--color-primary); font-size:24px; margin-bottom:10px; }
+        .arch-block strong { color:#fff; font-size:14px; margin-bottom:7px; }
+        .arch-block span { color:var(--color-text-muted); font-size:11px; line-height:1.4; }
+
+    </style>
+</head>
+<body>
+
+    <div id="deck-viewport">
+        
+        <!-- PRESENTATION CONTROL BAR -->
+        <div id="control-bar">
+            <button class="btn-ctrl" id="prev-btn" title="上一张 (Left Arrow)"><i class="fa-solid fa-chevron-left"></i></button>
+            <div id="slide-indicator">1 / 16</div>
+            <button class="btn-ctrl" id="next-btn" title="下一张 (Space / Right Arrow)"><i class="fa-solid fa-chevron-right"></i></button>
+            <button class="btn-ctrl" id="fullscreen-btn" title="全屏模式 (F)"><i class="fa-solid fa-expand"></i></button>
+        </div>
+
+        <div id="slides-container">
+
+            <!-- SLIDE 1: COVER -->
+            <div class="slide active" id="slide-1">
+                <div class="cover-layout">
+                    <div class="cover-badge">Embodied AI Infrastructure Pitch Deck</div>
+                    <h1 class="cover-title">LiftAI 具身升维科技</h1>
+                    <div class="cover-subtitle">Mid & Post-Training Infrastructure for Embodied Foundation Models</div>
+                    <p style="color: var(--color-secondary); font-family: var(--font-display); font-size: 16px; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 4px;">
+                        真正让物理智能落地的关键基础设施
+                    </p>
+                    <div class="cover-meta">
+                        <div class="cover-meta-item">主讲人: <strong>任逸飞 Founder / CEO</strong></div>
+                        <div class="cover-meta-item">融资规模: <strong>2,000万元人民币</strong></div>
+                        <div class="cover-meta-item">定位: <strong>机器人基础模型中后训练基础设施</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: SCALING CRISIS -->
+            <div class="slide" id="slide-2">
+                <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-triangle-exclamation"></i> 具身智能的真正瓶颈：Scaling 断层</h2><div class="slide-subtitle-en">The Scaling Crisis of Embodied AI</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
+                <div class="slide-content">
+                    <div class="grid-2" style="transform:scale(0.92); transform-origin:center center;">
+                        <div>
+                            <div class="big-statement">行业已经证明大模型路线有效，<br><span class="hl">但还没有证明如何规模化落地。</span></div>
+                            <p class="statement-muted">VLA、WM、RL 都在快速进步，但客户真正缺失的是一套可复用的训练流水线：如何从任意预训练模型出发，持续收集数据、失败检测、优化策略，并最终部署落地到真实环境中。</p>
+                            <div class="pill-row"><span class="pill">Pretrained Models Exist</span><span class="pill">Deployment Pipeline Missing</span><span class="pill">Robot Data Is Expensive</span></div>
+                        </div>
+                        <div>
+                            <div class="mini-label">AI Software Stack</div>
+                            <div class="flow-lane"><div class="flow-node"><strong>LLM 时代</strong><span>语言数据 → 预训练 → 微调 → 产品</span></div></div>
+                            <div class="flow-lane"><div class="flow-node"><strong>机器人时代</strong><span>机器人 / 仿真 / 人类数据 → 预训练 → <span class="hl">???</span> → 部署</span></div></div>
+                            <div class="tech-card missing-box" style="margin-top:18px;"><h3 style="font-size:18px;margin-bottom:8px;">LiftAI 填补中间层</h3><p style="font-size:13px;color:#cbd5e1;line-height:1.6;">我们建设的是机器人基础模型从“可训练”到“可上线”的 Mid & Post-Training Infra <br><span class="hl">(M & P)</span></p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>Scaling 断层</span><span>|</span><span>M & P</span></div><div>内部融资材料 - 第2页</div></div>
+            </div>
+
+            <!-- SLIDE 3: POSITIONING -->
+            <div class="slide" id="slide-3">
+                <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-layer-group"></i> 我们的定位：不只是机器人公司，更是训练基础设施</h2><div class="slide-subtitle-en">Our Position: The Missing Infrastructure Layer</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
+                <div class="slide-content">
+                    <div class="flow-lane">
+                        <div class="flow-node"><strong>任何预训练模型</strong><span>OpenPI / GR00T / Cosmos / OpenVLA / Customer Models / Proprietary Models </span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="flow-node missing-box"><strong>M & P</strong><span>中训练 · 世界模型反馈 · 后训练 RL · 部署评估</span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="flow-node"><strong>用户机器人</strong><span>人型机器人 · 移动操作台 · 工业机械臂 · 服务机器人</span></div>
+                    </div>
+                    <div class="grid-3" style="margin-top:35px;">
+                        <div class="tech-card"><h3 style="font-size:18px;margin-bottom:8px;">不做单一本体</h3><p style="font-size:13px;color:var(--color-text-muted);line-height:1.6;">软硬解耦，适配客户已有机器人与传感器配置。</p></div>
+                        <div class="tech-card"><h3 style="font-size:18px;margin-bottom:8px;">不押注单一模型</h3><p style="font-size:13px;color:var(--color-text-muted);line-height:1.6;">客户可以带入任何开源、闭源或使用 LiftAI 自研预训练策略模型。</p></div>
+                        <div class="tech-card"><h3 style="font-size:18px;margin-bottom:8px;">解决上线闭环</h3><p style="font-size:13px;color:var(--color-text-muted);line-height:1.6;">从数据、训练、评测到真实部署，形成标准化基础建设。</p></div>
+                    </div>
+                </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>模型与本体解耦设计</span><span>|</span><span>适配主流Policy框架和工业操作平台</span></div><div>内部融资资料 - 第3页</div></div>
+            </div>
+
+            <!-- SLIDE 4: MID TRAINING -->
+            <div class="slide" id="slide-4">
+                <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-route"></i> 缺失的一层：Mid-train 中训练</h2><div class="slide-subtitle-en">From Blind Finetuning to Targeted Scaling</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
+                <div class="slide-content">
+                    <div class="grid-2">
+                        <div class="tech-card" style="border-color:rgba(239,68,68,.3);"><div class="mini-label" style="color:#ef4444;">Today</div><h3 style="font-size:22px;margin-bottom:16px;">盲目数据循环</h3><ul class="x-list"><li>收集一批数据，finetune 一次。</li><li>上线失败后，再人工判断哪里缺数据。</li><li>每个新场景都依赖工程师经验和重复试错。</li><li>数据成本随场景复杂度线性甚至指数增长。</li></ul></div>
+                        <div class="tech-card missing-box"><div class="mini-label">LiftAI</div><h3 style="font-size:22px;margin-bottom:16px;">World Model 驱动的定向训练</h3><ul class="check-list"><li>WM 预测策略在哪些状态会失败。</li><li>自动识别数据稀缺区与长尾动作分布。</li><li>机器人遇到不确定区域时切换人类接管采集。</li><li>只采最有价值的数据，提升 mid-train 数据效率。</li></ul></div>
+                    </div>
+                    <div style="margin-top:26px;text-align:center;font-family:var(--font-display);font-size:22px;color:#fff;">世界模型不仅是生成器， <span class="hl">它是策略泛化的高级教师.</span></div>
+                </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>自主识别稀缺数据</span><span>|</span><span>自主发现策略盲点</span></div><div>内部融资资料 - 第4页</div></div>
+            </div>
+
+            <!-- SLIDE 5: CO-EVOLUTION -->
+            <div class="slide" id="slide-5">
+                <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-rotate"></i> 核心洞察：Policy 与 World Model 共同进化</h2><div class="slide-subtitle-en">Policy ↔ World Model Co-Evolution</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
+                <div class="slide-content">
+                    <div class="grid-2">
+                        <div class="flywheel"><div class="flywheel-center">Policy ↔ WM<br>数据飞轮</div><div class="flywheel-node n1"><strong>Policy</strong>执行与探索</div><div class="flywheel-node n2"><strong>World Model</strong>预测未来与失败</div><div class="flywheel-node n3"><strong>Human Switch</strong>稀缺区真人接管</div><div class="flywheel-node n4"><strong>Targeted Data</strong>只采关键样本</div><div class="flywheel-node n5"><strong>Update</strong>策略与WM同步提升</div></div>
+                        <div><div class="big-statement">更好的策略产生更好的世界模型；<br><span class="hl">更好的世界模型反过来训练更好的策略。</span></div><p class="statement-muted">传统 Imitation learning 把数据当静态资产；LiftAI 把数据、策略、世界模型变成一个自我增强系统。每一次部署失败都不只是 bug，而是下一轮训练最有价值的监督信号。</p><div class="metric-strip"><div class="metric"><strong>↓</strong><span>低价值重复数据</span></div><div class="metric"><strong>↑</strong><span>关键状态覆盖</span></div><div class="metric"><strong>↑</strong><span>长尾成功率</span></div><div class="metric"><strong>↓</strong><span>客户上线成本</span></div></div></div>
+                    </div>
+                </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>自进化训练飞轮</span><span>|</span><span>数据效率护城河</span></div><div>内部融资资料 - 第5页</div></div>
+            </div>
+
+            <!-- SLIDE 6: WORLD MODEL AS DATA INFRA -->
+            <div class="slide" id="slide-6">
+                <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-brain"></i> World Model 作为数据基础设施</h2><div class="slide-subtitle-en">World Model as Data Infrastructure</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
+                <div class="slide-content">
+                    <div class="grid-2">
+                        <video style="height: 360px; width: 100%; object-fit: contain; background: #000; border-radius:12px; border:1px solid var(--color-border);" controls autoplay loop muted playsinline><source src="./media/wam_predict.mp4" type="video/mp4"></video>
+                        <div class="grid-2" style="gap:16px;">
+                            <div class="tech-card"><h4 style="color:var(--color-primary);font-size:16px;margin-bottom:8px;">覆盖度评估</h4><p style="font-size:12.5px;color:var(--color-text-muted);line-height:1.6;">判断当前 policy 在哪些状态、物体、接触模式下数据不足。</p></div>
+                            <div class="tech-card"><h4 style="color:var(--color-primary);font-size:16px;margin-bottom:8px;">任务失败预测</h4><p style="font-size:12.5px;color:var(--color-text-muted);line-height:1.6;">在真机执行前预演失败概率，降低危险试错成本。</p></div>
+                            <div class="tech-card"><h4 style="color:var(--color-primary);font-size:16px;margin-bottom:8px;">高价值数据合成</h4><p style="font-size:12.5px;color:var(--color-text-muted);line-height:1.6;">生成可用于训练/评测的未来状态与候选轨迹。</p></div>
+                            <div class="tech-card"><h4 style="color:var(--color-primary);font-size:16px;margin-bottom:8px;">人工接管闭环</h4><p style="font-size:12.5px;color:var(--color-text-muted);line-height:1.6;">高不确定状态自动请求真人接管，采集最高价值数据。</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>World Model = 数据引擎</span><span>|</span><span>而非单纯的视频生成模型</span></div><div>内部融资资料 - 第6页</div></div>
+            </div>
+
+            <!-- SLIDE 7: EGOCENTRIC DATA ENGINE -->
+            <!-- <div class="slide" id="slide-7">
+                <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-database"></i> 数据引擎：第一视角人类交互 + 机器人执行闭环</h2><div class="slide-subtitle-en">Egocentric Data Engine for Embodied Scaling</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
+                <div class="slide-content">
+                    <div class="grid-2">
+                        <video style="height: 380px; width: 100%; object-fit: contain; background: #000; border-radius:12px; border:1px solid var(--color-border);" controls autoplay loop muted playsinline><source src="./media/0.mp4" type="video/mp4"></video>
+                        <div style="display:flex;flex-direction:column;gap:18px;justify-content:center;">
+                            <div class="tech-card"><h4 style="font-size:18px;margin-bottom:6px;">为什么是第一视角？</h4><p style="font-size:13px;color:var(--color-text-muted);line-height:1.6;">它天然对齐视觉注意力、手部交互、物体状态变化和未来机器人部署视角，是从人类行为迁移到机器人策略的高密度数据形态。</p></div>
+                            <div class="tech-card"><h4 style="font-size:18px;margin-bottom:6px;">为什么结合机器人执行？</h4><p style="font-size:13px;color:var(--color-text-muted);line-height:1.6;">人类数据提供广覆盖常识，机器人数据提供本体约束与动作可执行性。二者结合，才构成 mid-train 所需的可迁移数据闭环。</p></div>
+                            <div class="media-placeholder" style="height:110px;"><p>[PLACEHOLDER: 数据采集硬件 / 人机协同数据流图]</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>Human Priors</span><span>|</span><span>Robot Executability</span></div><div>内部融资资料 - 第7页</div></div>
+            </div> -->
+
+            <!-- SLIDE 7: ARCHITECTURE -->
+            <div class="slide" id="slide-7">
+                <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-diagram-project"></i> 中训练架构</h2><div class="slide-subtitle-en">Mid-Training Platform Architecture</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
+                <div class="slide-content">
+                    <div class="arch-grid">
+                        <div class="arch-block"><i class="fa-solid fa-robot"></i><strong>用户机器人</strong><span>接入本体、相机、控制接口</span></div>
+                        <div class="arch-block"><i class="fa-solid fa-database"></i><strong>数据层</strong><span>人类第一视角 + 少量机器人执行数据</span></div>
+                        <div class="arch-block"><i class="fa-solid fa-brain"></i><strong>World Model</strong><span>未来预测、覆盖评估、失败预判</span></div>
+                        <div class="arch-block"><i class="fa-solid fa-user-gear"></i><strong>稀缺数据评价</strong><span>稀缺状态触发真人接管</span></div>
+                        <div class="arch-block"><i class="fa-solid fa-network-wired"></i><strong>Policy Training</strong><span>适配任意 VA / VLA / WAM 动作策略</span></div>
+                        <div class="arch-block"><i class="fa-solid fa-rocket"></i><strong>部署</strong><span>真实场景评测、上线与持续优化</span></div>
+                    </div>
+                    <div class="media-placeholder" style="height:210px;margin-top:28px;"><i class="fa-solid fa-image"></i><p style="font-weight:700;">[PLACEHOLDER: 更完整的平台系统架构图]</p><span style="font-size:11px;color:var(--color-text-muted);margin-top:8px;">横向 pipeline：客户模型 → LiftAI infra → 机器人上线</span></div>
+                </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>中训练架构</span><span>|</span><span>端到端闭环进化</span></div><div>内部融资资料 - 第7页</div></div>
+            </div>
+
+            <!-- SLIDE 8: POST TRAINING -->
+            <div class="slide" id="slide-8">
+                <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-vials"></i> 后训练：World Model + RL 解决接触长尾</h2><div class="slide-subtitle-en">Post-Training for Contact-Rich Corner Cases</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
+                <div class="slide-content">
+                    <div class="grid-2">
+                        <div><div class="big-statement">Mid-train 解决可用性，<br><span class="hl">Post-train 解决极限成功率。</span></div><p class="statement-muted">真实部署中最难的不是“看起来会做”，而是高频、稳定、安全地处理接触丰富的角落情况。LiftAI 用 WM 降低 RL 探索成本，用真机反馈优化最后 5% 的成功率。</p><ul class="check-list" style="margin-top:20px;"><li>在 WM 中预筛选高风险动作，减少真机破坏性探索。</li><li>针对插入、装配、柔性物体、边角接触等长尾任务做 RL refinement。</li><li>把客户场景中的失败样本持续转化为 post-train reward 与评测集。</li></ul></div>
+                        <div class="grid-2" style="gap:16px;">
+                            <div class="tech-card"><h4>插入装配</h4><p style="font-size:12px;color:var(--color-text-muted);line-height:1.6;">插孔、卡扣、精密装配</p></div>
+                            <div class="tech-card"><h4>线缆布设</h4><p style="font-size:12px;color:var(--color-text-muted);line-height:1.6;">线缆、绕线、路径约束</p></div>
+                            <div class="tech-card"><h4>柔性物体</h4><p style="font-size:12px;color:var(--color-text-muted);line-height:1.6;">衣物、织物、多解状态</p></div>
+                            <div class="tech-card"><h4>长尾场景</h4><p style="font-size:12px;color:var(--color-text-muted);line-height:1.6;">滑落、碰撞、遮挡、异常接触</p></div><div class="media-placeholder" style="grid-column:1/3;height:150px;"><p>[PLACEHOLDER: contact-rich post-training demo]</p></div></div>
+                    </div>
+                </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>WM + RL</span><span>|</span><span>长尾操作</span></div><div>内部融资资料 - 第8页</div></div>
+            </div>
+
+            <!-- SLIDE 9: DEPLOYMENT RESULT -->
+            <div class="slide" id="slide-9">
+                <div class="slide-header">
+                    <div class="slide-title-group">
+                        <h2><i class="fa-solid fa-robot"></i> 从基础模型到可交付机器人</h2>
+                        <div class="slide-subtitle-en">From Foundation Model to Production Robot</div>
+                    </div>
+                    <div class="slide-logo">LIFT<span>AI</span></div>
+                </div>
+
+                <div class="slide-content">
+                    <div class="grid-2">
+                        <!-- VIDEO -->
+                        <div style="display:flex; align-items:center; position:relative;">
+                            <!-- 视频 -->
+                            <video
+                                style="width:100%; height:400px; object-fit:contain; background:#000; border-radius:12px; border:1px solid var(--color-border);"
+                                controls
+                                autoplay
+                                muted
+                                loop
+                                playsinline>
+                                <source src="./media/storage_tableware.mp4" type="video/mp4">
+                            </video>
+
+                            <!-- 右上角标签 -->
+                            <div style="
+                                position:absolute;
+                                top:0px;
+                                left:0px;
+                                background:rgba(2,6,23,0.85);
+                                backdrop-filter:blur(12px);
+                                border:1px solid rgba(56,189,248,0.35);
+                                color:var(--color-primary);
+                                padding:8px 14px;
+                                border-radius:999px;
+                                font-size:11px;
+                                font-family:var(--font-display);
+                                font-weight:700;
+                                letter-spacing:1px;
+                                text-transform:uppercase;
+                                z-index:20;
+                                box-shadow:0 8px 20px rgba(0,0,0,0.4);
+                            ">
+                                MID-TRAIN + POST-TRAIN
+                            </div>
+                        </div>
+
+                        <!-- TEXT -->
+                        <div style="display:flex; flex-direction:column; justify-content:center;">
+
+                            <div style="color:var(--color-primary); font-size:12px;letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; font-family:var(--font-display);
+                            ">Faster Deployment</div>
+
+                            <div class="big-statement" style="margin-bottom: 8px;"> <span class="hl">使用更少成本，</span> 更快部署策略</div>
+
+                            <div class="tech-card" style="margin-bottom: 12px;">
+                                <h4 style="color:var(--color-primary); margin-bottom:8px;">
+                                    Mid-Training（中训练）
+                                </h4>
+                                <p style="font-size:13px; color:var(--color-text-muted);">
+                                    基于世界模型发现数据盲区与能力边界，驱动高价值数据采集，提升模型泛化能力。
+                                </p>
+                            </div>
+
+                            <div class="tech-card" style="margin-bottom:12px;">
+                                <h4 style="color:var(--color-accent); margin-bottom:8px;">
+                                    Post-Training（后训练）
+                                </h4>
+                                <p style="font-size:13px; color:var(--color-text-muted);">
+                                    结合世界模型与强化学习，对复杂接触操作、长尾任务及极端场景进行持续优化，实现生产级性能提升。
+                                </p>
+                            </div>
+
+                            <div class="tech-card" style="border-color: #22c55e; background:rgba(34,197,94,0.05);"><h4 style="color:#22c55e; margin-bottom:8px;">商业价值</h4><p style="font-size:13px; color:var(--color-text-muted);">加速机器人落地部署，降低数据获取成本，提高任务成功率，缩短从模型研发到生产交付的周期。</p></div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="slide-footer">
+                    <div class="slide-footer-left">
+                        <span>M & P 框架</span>
+                        <span>|</span>
+                        <span>商业价值</span>
+                    </div>
+                    <div>内部融资资料 - 第9页</div>
+                </div>
+            </div>
+
+            <!-- SLIDE 10: CUSTOMER WORKFLOW -->
+            <div class="slide" id="slide-10">
+                <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-person-running"></i> 客户工作流：从模型到真实机器人上线</h2><div class="slide-subtitle-en">Customer Workflow: Bring Any Model, Launch Any Robot</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
+                <div class="slide-content">
+                    <div class="flow-lane"><div class="flow-node"><strong>1. 预训练模型</strong><span>客户选择开源底座或 LiftAI 自研模型</span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+                    <div class="flow-node"><strong>2. 机器人本体</strong><span>接入机器人本体、相机与控制接口</span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+                    <div class="flow-node"><strong>3. 初始数据</strong><span>少量示范 + 初始场景数据</span></div></div>
+
+                    <div class="flow-lane"><div class="flow-node missing-box"><strong>4. Mid-Train</strong><span>世界模型发现数据稀缺位置并切换人工采集，同步优化策略模型与世界模型</span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    
+                    <div class="flow-node missing-box"><strong>5. Post-Train</strong><span>WM + RL 优化长尾接触</span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    
+                    <div class="flow-node"><strong>6. 部署</strong><span>真实场景部署与持续迭代</span></div></div>
+                    
+                    <div style="margin-top:30px;text-align:center;font-size:28px;font-family:var(--font-display);font-weight:700;">我们帮助机器人<span class="hl">落地真实场景</span>, 而不仅是产出文章。</div>
+                </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>客户工作流</span><span>|</span><span>面向落地的基础建设</span></div><div>内部融资资料 - 第10页</div></div>
+            </div>
+
+            <!-- SLIDE 11: BUSINESS MODEL -->
+            <div class="slide" id="slide-11">
+                <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-money-bill-transfer"></i> 商业模式：机器人训练 Infra 的三层收入</h2><div class="slide-subtitle-en">Revenue Model: Platform + Training + Deployment</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
+                <div class="slide-content"><div class="grid-3" style="align-items:stretch;">
+                    <div class="tech-card"><i class="fa-solid fa-key" style="font-size:28px;color:var(--color-primary);margin-bottom:14px;"></i><h3 style="font-size:20px;margin-bottom:10px;">1. 平台授权</h3><p style="font-size:13px;color:var(--color-text-muted);line-height:1.6;">年度授权：数据管理、世界模型、策略模型、评测可视化等核心能力。</p></div>
+                    
+                    <div class="tech-card missing-box"><i class="fa-solid fa-cloud" style="font-size:28px;color:var(--color-primary);margin-bottom:14px;"></i><h3 style="font-size:20px;margin-bottom:10px;">2. 训练基础设施</h3><p style="font-size:13px;color:#cbd5e1;line-height:1.6;">按训练规模、GPU消耗、模型迭代次数收费。客户不必自建完整具身训练栈。</p></div>
+                    
+                    <div class="tech-card"><i class="fa-solid fa-screwdriver-wrench" style="font-size:28px;color:var(--color-primary);margin-bottom:14px;"></i><h3 style="font-size:20px;margin-bottom:10px;">3. 全栈场景部署</h3><p style="font-size:13px;color:var(--color-text-muted);line-height:1.6;">针对高价值垂直场景项目制交付：装配、清洁、仓储、商业服务等，形成早期现金流与场景数据壁垒。</p></div></div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>持续性平台收入</span><span>|</span><span>高毛利场景服务</span></div><div>内部融资资料 - 第11页</div></div>
+            </div>
+
+
+            <!-- SLIDE 12: FOUNDING TEAM -->
+            <div class="slide" id="slide-12">
+                <div class="slide-header">
+                    <div class="slide-title-group">
+                        <h2><i class="fa-solid fa-people-group"></i> 创始团队：机器人算法与商业化复合背景</h2>
+                        <div class="slide-subtitle-en">Founding Team: Research Depth + Deployment Ambition</div>
+                    </div>
+                    <div class="slide-logo">LIFT<span>AI</span></div>
+                </div>
+                <div class="slide-content">
+                    <div class="team-grid">
+                        <div class="member-card active" data-member="ceo">
+                            <div class="avatar-placeholder"><i class="fa-solid fa-brain"></i></div>
+                            <div class="member-name">任逸飞</div>
+                            <div class="member-role">CEO / 创始人</div>
+                            <div class="member-tags">
+                                <span class="m-tag">Efficient Robot Learning</span>
+                                <span class="m-tag">3D Vision</span>
+                                <span class="m-tag">AI + Finance</span>
+                            </div>
+                        </div>
+                        <div class="member-card" data-member="cto">
+                            <div class="avatar-placeholder"><i class="fa-solid fa-eye"></i></div>
+                            <div class="member-name">钱诚</div>
+                            <div class="member-role">CTO / 联合创始人</div>
+                            <div class="member-tags">
+                                <span class="m-tag">World Model</span>
+                                <span class="m-tag">In-Context IL</span>
+                                <span class="m-tag">Industrial Experience</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="team-detail-panel" class="tech-card" style="margin:30px auto 0;max-width:820px;">
+                        <div class="detail-title" id="member-detail-title" style="font-size:18px;color:#fff;font-weight:700;margin-bottom:10px;">
+                            <i class="fa-solid fa-graduation-cap"></i> 任逸飞 | CEO 创始人
+                        </div>
+                        <div class="detail-desc" id="member-detail-desc" style="font-size:13px;color:var(--color-text-muted);line-height:1.7;">
+                            专注机器人模仿学习、3D视觉与具身世界模型方向，具备从底层算法、真机系统到融资叙事和商业落地的复合能力。当前重点推动 M & P 平台。
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>技术创始人与市场需求高度契合</span><span>|</span><span>具身智能 AI Infra</span></div><div>内部融资资料 - 第12页</div></div>
+            </div>
+
+            <!-- SLIDE 13: FUNDING -->
+            <div class="slide" id="slide-13">
+                <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-sack-dollar"></i> 2,000万元融资: 12个月完成技术、客户与商业三重验证</h2><div class="slide-subtitle-en">20,000,000 RMB Capital Allocation Plan</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
+                <div class="slide-content"><div class="budget-grid"><div class="donut-chart-container"><svg viewBox="0 0 36 36" class="donut-svg"><circle cx="18" cy="18" r="15.915" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="3"></circle><circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-dasharray="35 65" stroke-dashoffset="100"></circle><circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--color-accent)" stroke-width="3" stroke-dasharray="30 70" stroke-dashoffset="65"></circle><circle cx="18" cy="18" r="15.915" fill="none" stroke="#22c55e" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="35"></circle><circle cx="18" cy="18" r="15.915" fill="none" stroke="#eab308" stroke-width="3" stroke-dasharray="10 90" stroke-dashoffset="15"></circle><circle cx="18" cy="18" r="15.915" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="5 95" stroke-dashoffset="5"></circle></svg><div class="funding-label-box"><div class="funding-total-num">2,000万</div><div class="funding-total-sub">12个月 Runway</div></div></div>    
+                <div class="budget-list">
+                    <div class="budget-list-item" style="--accent:var(--color-primary);"><div><div class="budget-item-title"><span class="budget-item-num">01</span>核心团队</div><span class="budget-item-sub">约10人核心团队：算法、本体
+                    、系统、数据、产品化</span></div><div class="budget-item-value"><span class="budget-item-pct">35%-40%</span><span class="budget-item-amount">700 - 800 万元</span></div></div>
+
+                    <div class="budget-list-item" style="--accent:var(--color-accent);"><div><div class="budget-item-title"><span class="budget-item-num">02</span>算力与存储</div><span class="budget-item-sub">本地研发验证 + 云端大规模训练与评测</span></div><div class="budget-item-value"><span class="budget-item-pct">25%-30%</span><span class="budget-item-amount">500 - 600 万元</span></div></div>
+                    
+                    <div class="budget-list-item" style="--accent:#22c55e;"><div><div class="budget-item-title"><span class="budget-item-num">03</span>硬件与数据基础设施</div><span class="budget-item-sub">机器人本体、WM反馈、主动采集、RL后训练、评测系统</span></div><div class="budget-item-value"><span class="budget-item-pct">10%-15%</span><span class="budget-item-amount">200-300 万元</span></div></div>
+                    
+                    <div class="budget-list-item" style="--accent:#eab308;"><div><div class="budget-item-title"><span class="budget-item-num">04</span>客户 POC 与部署</div><span class="budget-item-sub">重点客户POC、场景数据、真实部署验证</span></div><div class="budget-item-value"><span class="budget-item-pct">10%</span><span class="budget-item-amount">200 万元</span></div></div>
+                    
+                    <div class="budget-list-item" style="--accent:#ef4444;"><div><div class="budget-item-title"><span class="budget-item-num">05</span>其他</div><span class="budget-item-sub">未承诺储备：法务、知识产权、行政、差旅及运营储备等</span></div><div class="budget-item-value"><span class="budget-item-pct">15%</span><span class="budget-item-amount">300 万元</span></div></div></div></div>
+                </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>资本高效扩张</span><span>|</span><span>基础设施优先投入</span></div><div>内部融资资料 - 第13页</div></div>
+            </div>
+
+            <!-- SLIDE 14: ROADMAP -->
+            <div class="slide" id="slide-14">
+                <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-timeline"></i> 12个月关键里程碑：从 MVP 到客户部署</h2><div class="slide-subtitle-en">12-Month Roadmap and Deliverables</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
+                <div class="slide-content"><div class="roadmap-timeline"><div class="roadmap-phase" style="--phase-color:var(--color-primary);"><div class="roadmap-phase-marker">A</div><div><div class="roadmap-phase-time">0 — 4 个月</div><div class="roadmap-phase-title">Mid-Training MVP</div><div class="roadmap-phase-subhead">Technical Proof</div></div><ul class="roadmap-phase-list"><li>打通任意预训练 policy → LiftAI Mid-Train闭环 → 真机demo 的最小闭环。</li><li>完成多场景 WM OOD检测、人工接管与定向数据采集演示。</li><li>在一个核心场景中量化验证数据效率、任务成功率和迭代周期。</li></ul></div><div class="roadmap-phase" style="--phase-color:var(--color-accent);"><div class="roadmap-phase-marker">B</div><div><div class="roadmap-phase-time">4 — 8 个月</div><div class="roadmap-phase-title">Post-Training MVP & Paid Pilot</div><div class="roadmap-phase-subhead">Customer Proof</div></div><ul class="roadmap-phase-list"><li>上线World Model + RL最小后训练模块。</li><li>在contact-rich 或长尾任务上验证成功率提升。</li><li> 与 1—2 家硬件或场景客户开展联合POC，其中至少一个为付费或成本共担项目。</li><li> 沉淀首个可复用训练与评测模板。</li></ul></div><div class="roadmap-phase" style="--phase-color:#22c55e;"><div class="roadmap-phase-marker">C</div><div><div class="roadmap-phase-time">8 — 12 个月</div><div class="roadmap-phase-title">Pilot Deployment & Commercial Proof</div><div class="roadmap-phase-subhead">Business Proof</div></div><ul class="roadmap-phase-list"><li>在重点客户真实环境完成试点部署和持续运行测试。</li><li>形成客户案例、模型指标、部署效率和数据闭环证据。</li><li>获得首笔商业收入、采购意向或年度合作框架。</li><li>验证从第一个场景向第二个场景复制的可行性。</li><li>完成下一轮融资所需的技术、客户和商业数据包。</li></ul></div></div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>全周期并行推进</span><span>|</span><span>客户共创</span><span>|</span><span>数据闭环</span><span>|</span><span>系统产品化</span></div><div>内部融资资料 - 第14页</div></div>
+            </div>
+
+            <!-- SLIDE 16: INVESTMENT HIGHLIGHTS -->
+            <div class="slide" id="slide-15">
+                <div class="slide-header">
+                    <div class="slide-title-group"><h2><i class="fa-solid fa-star"></i> 投资核心亮点：机器人时代的训练 Infra</h2><div class="slide-subtitle-en">Why LiftAI Wins</div></div><div class="slide-logo">LIFT<span>AI</span></div>
+                </div>
+                <div class="slide-content">
+                    <div class="grid-4" style="align-items:stretch;"><div class="tech-card">
+                    <div style="font-size:26px;color:var(--color-primary);margin-bottom:10px;"><i class="fa-solid fa-earth-asia"></i></div><h4 style="font-size:16px;margin-bottom:8px;">明确切入点</h4><p style="font-size:11.5px;color:var(--color-text-muted);line-height:1.55;">工业操作场景存在高频训练与部署需求。</p></div>
+                    
+                    <div class="tech-card"><div style="font-size:26px;color:var(--color-primary);margin-bottom:10px;"><i class="fa-solid fa-lightbulb"></i></div><h4 style="font-size:16px;margin-bottom:8px;">技术楔子</h4><p style="font-size:11.5px;color:#cbd5e1;line-height:1.55;">WM驱动的失败挖掘和定向数据闭环。</p></div>
+                    
+                    <div class="tech-card"><div style="font-size:26px;color:var(--color-primary);margin-bottom:10px;"><i class="fa-solid fa-shield-halved"></i></div><h4 style="font-size:16px;margin-bottom:8px;">复合壁垒</h4><p style="font-size:11.5px;color:var(--color-text-muted);line-height:1.55;">动作策略-世界模型闭环协同，加上后训练强化形成系统壁垒。</p></div>
+                    
+                    <div class="tech-card"><div style="font-size:26px;color:var(--color-primary);margin-bottom:10px;"><i class="fa-solid fa-coins"></i></div><h4 style="font-size:16px;margin-bottom:8px;">资本高效</h4><p style="font-size:11.5px;color:var(--color-text-muted);line-height:1.55;">通过定向数据采集降低训练成本，用客户场景反哺平台。</p></div>
+                </div>
+
+                    <div style="margin-top:34px;text-align:center;font-family:var(--font-display);font-size:28px;font-weight:700;">LiftAI 打造具身智能 <span class="hl">M & P训练基础设施平台</span>.</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>基础设施商业模式</span><span>|</span><span>平台经济效应</span></div><div>内部融资资料 - 第15页</div></div>
+            </div>
+
+            <!-- SLIDE 17: VISION & THANK YOU -->
+            <div class="slide" id="slide-16">
+                <div class="cover-layout"><div class="cover-badge" style="border-color:var(--color-accent);color:var(--color-accent);background:rgba(139,92,246,0.1);">Join the Physical AI Revolution</div><h1 class="cover-title" style="font-size:56px;">将物理AI真正部署在工厂里</h1><div class="cover-subtitle" style="font-size:20px;color:var(--color-text-muted);">LiftAI builds the Mid-Training and Post-Training infrastructure layer for embodied foundation models.</div><div style="margin:40px 0;background:rgba(56,189,248,0.05);border:1px solid var(--color-border);padding:20px 40px;border-radius:12px;width:60%;text-align:center;"><h4 style="font-size:16px;color:var(--color-primary);margin-bottom:8px;">具身升维科技 LiftAI</h4><p style="font-size:14px;color:#fff;">核心联络信箱：<strong>liftai2024@gmail.com</strong></p><p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">[PLACEHOLDER: 创始人微信 / 公司官网 / Demo QR Code]</p></div><p style="font-size:11px;color:rgba(255,255,255,0.2);">© 2026 具身升维科技. 仅供投资人参考.</p></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- PPT INTERACTIVE SCRIPTS -->
+    <script>
+        // SLIDE NAVIGATION STATE
+        let currentSlide = 1;
+        const totalSlides = 16;
+
+        const updateSlideUI = () => {
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+                // Pause any videos on slides leaving view so they don't keep playing in background.
+                slide.querySelectorAll('video').forEach(v => { try { v.pause(); } catch (e) {} });
+            });
+            const targetSlide = document.getElementById(`slide-${currentSlide}`);
+            if (targetSlide) {
+                targetSlide.classList.add('active');
+                // Restart any videos on the newly-active slide from the beginning.
+                targetSlide.querySelectorAll('video').forEach(v => {
+                    try {
+                        v.currentTime = 0;
+                        const p = v.play();
+                        if (p && typeof p.catch === 'function') p.catch(() => {});
+                    } catch (e) {}
+                });
+            }
+
+            document.getElementById('slide-indicator').innerText = `${currentSlide} / ${totalSlides}`;
+        };
+
+        const nextSlide = () => {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlideUI();
+            }
+        };
+
+        const prevSlide = () => {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideUI();
+            }
+        };
+
+        document.getElementById('next-btn').addEventListener('click', nextSlide);
+        document.getElementById('prev-btn').addEventListener('click', prevSlide);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'f' || e.key === 'F') {
+                toggleFullScreen();
+            }
+        });
+
+        const toggleFullScreen = () => {
+            const viewport = document.getElementById('deck-viewport');
+            if (!document.fullscreenElement) {
+                viewport.requestFullscreen().catch(err => {
+                    console.log(`Error entering fullscreen: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        };
+        document.getElementById('fullscreen-btn').addEventListener('click', toggleFullScreen);
+
+
+        // FOUNDING TEAM CARD INTERACTION (Ren Yifei & Qian Cheng)
+        const teamData = {
+            ceo: {
+                title: "任逸飞 | CEO 创始人学术背景与商业优势",
+                desc: "帝国理工计算机系在读博士，专注于机器人深度模仿学习与3D计算机视觉。南开大学人工智能与金融双学位获得者。曾创立极客公园创赛冠军项目“Palette”，荣获亚马逊机器人领域杰出博士成就二等奖。具备出色的底层算法能力与开阔的商业变现洞察力。"
+            },
+            cto: {
+                title: "钱诚 | CTO 联合创始人学术积淀",
+                desc: "帝国理工计算机在读博士，主研世界模型与模仿学习系统。慕尼黑工业大学 (TUM) 硕士学位最优秀等级完成者。曾先后担任国内头部两家具身大厂的感知及策略执行主力架构骨干，工业经验丰富。"
+            }
+        };
+
+        document.querySelectorAll('.member-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.member-card').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+
+                const member = this.getAttribute('data-member');
+                const detail = teamData[member];
+
+                document.getElementById('member-detail-title').innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${detail.title}`;
+                document.getElementById('member-detail-desc').innerText = detail.desc;
+            });
+        });
+
+        // SCALE WINDOW FIT
+        /* function adjustScale() {
+            const viewport = document.getElementById('deck-viewport');
+            const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+            // const targetW = 1280, targetH = 720;
+            // // In fullscreen the deck-viewport is the fullscreen root; its own
+            // // containing block is the screen. Use the screen size in that case
+            // // so the deck scales up to fill the display.
+            // const inFullscreen = !!document.fullscreenElement;
+            // const winW = inFullscreen ? (window.screen.width || window.innerWidth) : window.innerWidth;
+            // const winH = inFullscreen ? (window.screen.height || window.innerHeight) : window.innerHeight;
+            // const scale = Math.min(winW / targetW, winH / targetH);
+            viewport.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        } */
+        function adjustScale() {
+            const viewport = document.getElementById('deck-viewport');
+            const targetW = 1280;
+            const targetH = 720;
+
+            const winW = window.innerWidth;
+            const winH = window.innerHeight;
+
+            const scale = Math.min(winW / targetW, winH / targetH);
+
+            viewport.style.width = `${targetW}px`;
+            viewport.style.height = `${targetH}px`;
+            viewport.style.left = '50%';
+            viewport.style.top = '50%';
+            viewport.style.transformOrigin = 'center center';
+            viewport.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        }
+        window.addEventListener('resize', adjustScale);
+        window.addEventListener('load', adjustScale);
+        document.addEventListener('fullscreenchange', () => {
+            setTimeout(adjustScale, 100);
+        });
+        document.addEventListener('webkitfullscreenchange', () => {
+            setTimeout(adjustScale, 100);
+        });
+        // document.addEventListener('fullscreenchange', adjustScale);
+        // document.addEventListener('webkitfullscreenchange', adjustScale);
+
+    </script>
+</body>
+</html>
