@@ -350,12 +350,57 @@
             color: var(--color-text-bright);
         }
 
+        .vision-contact-card {
+            width: 62%;
+            max-width: 700px;
+            margin: 24px 0 28px;
+            padding: 16px 20px 16px 24px;
+            display: grid;
+            grid-template-columns: 1fr 116px;
+            gap: 24px;
+            align-items: center;
+            text-align: left;
+            background: rgba(56, 189, 248, 0.05);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+        }
+
+        .vision-contact-card h4 {
+            font-size: 17px;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .vision-contact-email {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .vision-contact-hint {
+            margin-top: 10px;
+            font-size: 11px;
+            color: var(--color-text-muted);
+        }
+
+        .vision-qr {
+            width: 116px;
+            height: 154px;
+            object-fit: contain;
+            display: block;
+            justify-self: end;
+            padding: 4px;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
+        }
+
         /* TEAM GRID SECTION */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            max-width: 800px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            width: 100%;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -363,10 +408,11 @@
             background: rgba(15, 23, 42, 0.6);
             border: 1px solid var(--color-border);
             border-radius: 12px;
-            padding: 24px;
+            padding: 16px 14px 14px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
+            min-height: 216px;
         }
 
         .member-card.active, .member-card:hover {
@@ -376,33 +422,68 @@
         }
 
         .avatar-placeholder {
-            width: 90px;
-            height: 90px;
+            width: 82px;
+            height: 82px;
             border-radius: 50%;
             background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(139, 92, 246, 0.2));
-            margin: 0 auto 15px;
+            margin: 0 auto 11px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid rgba(56, 189, 248, 0.3);
-            font-size: 32px;
+            font-size: 27px;
             color: var(--color-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-photo {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .member-photo--ceo {
+            object-fit: contain;
+            transform: scale(1.08);
+            background: #d9dbc9;
+        }
+
+        .member-photo-frame {
+            padding: 3px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.72), rgba(139, 92, 246, 0.72));
+            border-color: rgba(125, 211, 252, 0.55);
+            box-shadow: 0 0 22px rgba(56, 189, 248, 0.12);
+        }
+
+        .photo-placeholder-label {
+            position: absolute;
+            left: 50%;
+            bottom: 5px;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-family: var(--font-display);
+            font-size: 7px;
+            letter-spacing: 1.2px;
+            color: #94a3b8;
         }
 
         .member-name {
-            font-size: 22px;
+            font-size: 19px;
             font-weight: 700;
             color: var(--color-text-bright);
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
 
         .member-role {
-            font-size: 14px;
+            font-size: 12px;
             color: var(--color-accent);
             font-family: var(--font-display);
             font-weight: 600;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
+            margin-bottom: 9px;
+            letter-spacing: .8px;
         }
 
         .member-tags {
@@ -414,10 +495,31 @@
 
         .m-tag {
             background: rgba(255, 255, 255, 0.05);
-            padding: 2px 10px;
+            padding: 2px 8px;
             border-radius: 4px;
-            font-size: 11px;
+            font-size: 9.5px;
             color: var(--color-text-muted);
+        }
+
+        .member-profile-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8px;
+            color: var(--color-primary);
+            font-family: var(--font-display);
+            font-size: 9px;
+            letter-spacing: .5px;
+            text-decoration: none;
+        }
+
+        .member-profile-link:hover { color: #e0f2fe; }
+
+        .team-detail-panel {
+            margin: 20px auto 0;
+            max-width: 1000px;
+            min-height: 104px;
+            padding: 18px 22px;
         }
 
         /* INTERACTIVE SIMULATOR */
@@ -876,6 +978,347 @@
         .arch-block strong { color:#fff; font-size:14px; margin-bottom:7px; }
         .arch-block span { color:var(--color-text-muted); font-size:11px; line-height:1.4; }
 
+        /* CORE TECHNOLOGY: TASK-SPECIALIZED MULTIVIEW WORLD MODEL */
+        .wm-tech-slide .slide-header { margin-bottom: 16px; }
+        .wm-tech-slide .slide-content { justify-content: flex-start; }
+        .wm-tech-canvas {
+            display: grid;
+            grid-template-columns: 206px 34px 300px 34px 1fr;
+            grid-template-rows: 308px 82px;
+            column-gap: 14px;
+            row-gap: 14px;
+            align-items: stretch;
+            width: 100%;
+        }
+        .wm-stage {
+            background: rgba(8, 15, 31, 0.88);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            border-radius: 15px;
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .wm-stage::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(56, 189, 248, 0.06);
+            filter: blur(30px);
+            right: -70px;
+            bottom: -80px;
+            pointer-events: none;
+        }
+        .wm-step-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-display);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+        }
+        .wm-step-label b {
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.45);
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            background: rgba(56, 189, 248, 0.08);
+        }
+        .wm-view-stack {
+            height: 211px;
+            position: relative;
+        }
+        .wm-camera-view {
+            width: 143px;
+            height: 82px;
+            position: absolute;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            border-radius: 9px;
+            overflow: hidden;
+            background:
+                linear-gradient(rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+                linear-gradient(155deg, #111b30, #07101f 66%);
+            background-size: 14px 14px, 14px 14px, auto;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28);
+        }
+        .wm-camera-view:nth-child(1) { left: 0; top: 0; z-index: 1; }
+        .wm-camera-view:nth-child(2) { right: 0; top: 64px; z-index: 2; }
+        .wm-camera-view:nth-child(3) { left: 4px; top: 128px; z-index: 3; }
+        .wm-camera-view::before {
+            content: '';
+            position: absolute;
+            width: 58px;
+            height: 7px;
+            background: #8b5cf6;
+            border-radius: 6px;
+            transform: rotate(28deg);
+            left: 46px;
+            top: 32px;
+            box-shadow: -28px -15px 0 -1px #64748b;
+        }
+        .wm-camera-view::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            background: #38bdf8;
+            right: 18px;
+            bottom: 16px;
+            box-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
+        }
+        .wm-camera-view:nth-child(2)::before { transform: rotate(-16deg); left: 34px; top: 35px; }
+        .wm-camera-view:nth-child(2)::after { background: #f59e0b; right: 28px; bottom: 13px; box-shadow: 0 0 14px rgba(245, 158, 11, 0.4); }
+        .wm-camera-view:nth-child(3)::before { transform: rotate(8deg); left: 45px; top: 30px; }
+        .wm-camera-view:nth-child(3)::after { background: #22c55e; right: 22px; bottom: 17px; box-shadow: 0 0 14px rgba(34, 197, 94, 0.4); }
+        .wm-camera-label {
+            position: absolute;
+            top: 6px;
+            left: 7px;
+            z-index: 2;
+            font-family: var(--font-display);
+            font-size: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #dbeafe;
+            padding: 3px 5px;
+            border-radius: 4px;
+            background: rgba(2, 6, 23, 0.72);
+        }
+        .wm-action-chip {
+            height: 31px;
+            border: 1px solid rgba(139, 92, 246, 0.38);
+            border-radius: 8px;
+            background: rgba(139, 92, 246, 0.09);
+            color: #ddd6fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: var(--font-display);
+            font-size: 10px;
+            letter-spacing: .5px;
+        }
+        .wm-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            position: relative;
+        }
+        .wm-connector::before {
+            content: '';
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(56, 189, 248, 0.75));
+        }
+        .wm-connector i {
+            position: absolute;
+            right: -1px;
+            font-size: 13px;
+            filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.7));
+        }
+        .wm-core {
+            border-color: rgba(56, 189, 248, 0.42);
+            background:
+                radial-gradient(circle at 50% 42%, rgba(56, 189, 248, 0.15), transparent 48%),
+                linear-gradient(145deg, rgba(13, 28, 50, 0.98), rgba(8, 13, 29, 0.98));
+            box-shadow: inset 0 0 38px rgba(56, 189, 248, 0.06), 0 0 28px rgba(56, 189, 248, 0.08);
+            text-align: center;
+        }
+        .wm-core-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: rgba(56, 189, 248, 0.09);
+            border: 1px solid rgba(56, 189, 248, 0.28);
+            color: #bae6fd;
+            font-family: var(--font-display);
+            font-size: 9px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin: -1px 0 11px;
+        }
+        .wm-core-title {
+            font-family: var(--font-display);
+            font-size: 22px;
+            line-height: 1.05;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+            margin-bottom: 13px;
+        }
+        .wm-core-title span { color: var(--color-primary); }
+        .wm-core-layer {
+            height: 38px;
+            margin: 7px auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            border-radius: 8px;
+            background: rgba(2, 6, 23, 0.58);
+            color: #e2e8f0;
+            padding: 0 12px;
+            font-size: 10px;
+        }
+        .wm-core-layer i { color: var(--color-primary); width: 15px; }
+        .wm-core-layer small {
+            font-family: var(--font-display);
+            font-size: 8px;
+            letter-spacing: .8px;
+            color: #64748b;
+            text-transform: uppercase;
+            margin-left: auto;
+        }
+        .wm-specialized-tag {
+            margin-top: 10px;
+            font-size: 9px;
+            color: #c4b5fd;
+            letter-spacing: .5px;
+        }
+        .wm-output-stage { padding: 16px 15px; }
+        .wm-heads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .wm-head {
+            height: 91px;
+            padding: 11px 9px;
+            border-radius: 9px;
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            background: rgba(15, 23, 42, 0.68);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .wm-head i { font-size: 16px; color: var(--head-color, var(--color-primary)); }
+        .wm-head strong { font-family: var(--font-display); font-size: 11px; color: #fff; line-height: 1.15; }
+        .wm-head span { font-size: 8.5px; color: var(--color-text-muted); line-height: 1.25; }
+        .wm-rollout {
+            margin-top: 10px;
+            border: 1px solid rgba(139, 92, 246, 0.24);
+            background: rgba(139, 92, 246, 0.055);
+            border-radius: 10px;
+            padding: 11px 12px 12px;
+        }
+        .wm-rollout-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-display);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .2px;
+            color: #c4b5fd;
+            margin-bottom: 10px;
+        }
+        .wm-rollout-title span { color: #94a3b8; font-size: 11px; font-weight: 600; }
+        .wm-rollout-track { display: flex; align-items: center; gap: 6px; }
+        .wm-state {
+            width: 29px;
+            height: 29px;
+            border-radius: 7px;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            background: rgba(56, 189, 248, 0.09);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #bae6fd;
+            font-family: var(--font-display);
+            font-size: 8px;
+        }
+        .wm-state-arrow { color: #64748b; font-size: 8px; }
+        .wm-policy-update {
+            flex: 1;
+            height: 34px;
+            border-radius: 8px;
+            background: linear-gradient(90deg, rgba(139, 92, 246, .22), rgba(56, 189, 248, .18));
+            border: 1px solid rgba(139, 92, 246, .36);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        .wm-real-loop {
+            min-height: 28px;
+            margin-top: 8px;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #dbeafe;
+            font-size: 11px;
+            font-weight: 600;
+            border: 1px solid rgba(34, 197, 94, 0.18);
+            border-radius: 8px;
+            background: rgba(34, 197, 94, 0.045);
+        }
+        .wm-real-loop i { color: #22c55e; }
+        .wm-thesis {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1.3fr auto 1fr auto;
+            align-items: center;
+            gap: 18px;
+            padding: 13px 17px;
+            border-radius: 13px;
+            border: 1px solid rgba(56, 189, 248, 0.28);
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.09), rgba(15, 23, 42, 0.68) 52%, rgba(139, 92, 246, 0.08));
+        }
+        .wm-thesis-copy small {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 8px;
+            color: var(--color-primary);
+            letter-spacing: 1.7px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .wm-thesis-copy strong { font-size: 14px; color: #fff; line-height: 1.4; }
+        .wm-thesis-copy strong span { color: var(--color-primary); }
+        .wm-thesis-divider { width: 1px; height: 44px; background: rgba(148, 163, 184, 0.16); }
+        .wm-benefits { display: flex; gap: 8px; }
+        .wm-benefit {
+            min-width: 72px;
+            text-align: center;
+            padding: 7px 8px;
+            border-radius: 8px;
+            background: rgba(2, 6, 23, 0.46);
+            border: 1px solid rgba(148, 163, 184, 0.11);
+        }
+        .wm-benefit strong { display: block; color: #fff; font-size: 10px; margin-bottom: 2px; }
+        .wm-benefit span { color: var(--color-text-muted); font-size: 8px; }
+        .wm-research-badge {
+            white-space: nowrap;
+            padding: 9px 11px;
+            border-radius: 9px;
+            border: 1px solid rgba(139, 92, 246, 0.38);
+            background: rgba(139, 92, 246, 0.08);
+            font-family: var(--font-display);
+            font-size: 8px;
+            line-height: 1.5;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #c4b5fd;
+            text-align: center;
+        }
+        .wm-research-badge strong { display: block; color: #f5f3ff; font-size: 9px; }
+
     </style>
 </head>
 <body>
@@ -896,7 +1339,7 @@
             <div class="slide active" id="slide-1">
                 <div class="cover-layout">
                     <div class="cover-badge">Embodied AI Infrastructure Pitch Deck</div>
-                    <h1 class="cover-title">LiftAI 具身升维科技</h1>
+                    <h1 class="cover-title">LIFTAI 具身升维科技</h1>
                     <div class="cover-subtitle">Mid & Post-Training Infrastructure for Embodied Foundation Models</div>
                     <p style="color: var(--color-secondary); font-family: var(--font-display); font-size: 16px; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 4px;">
                         真正让物理智能落地的关键基础设施
@@ -990,8 +1433,79 @@
                 <div class="slide-footer"><div class="slide-footer-left"><span>World Model = 数据引擎</span><span>|</span><span>而非单纯的视频生成模型</span></div><div>内部融资资料 - 第6页</div></div>
             </div>
 
-            <!-- SLIDE 7: EGOCENTRIC DATA ENGINE -->
-            <!-- <div class="slide" id="slide-7">
+            <!-- SLIDE 7: CORE TECHNOLOGY -->
+            <div class="slide wm-tech-slide" id="slide-7">
+                <div class="slide-header">
+                    <div class="slide-title-group">
+                        <h2><i class="fa-solid fa-microchip"></i> 核心技术：面向精密操作中训练的多视角 World Model</h2>
+                        <div class="slide-subtitle-en">Task-Specialized · Multiview · Decision-Aware World Modeling</div>
+                    </div>
+                    <div class="slide-logo">LIFT<span>AI</span></div>
+                </div>
+                <div class="slide-content">
+                    <div class="wm-tech-canvas">
+                        <div class="wm-stage">
+                            <div class="wm-step-label"><b>01</b> 真实世界输入</div>
+                            <div class="wm-view-stack" aria-label="Multiview tabletop observations">
+                                <div class="wm-camera-view"><span class="wm-camera-label">Front View</span></div>
+                                <div class="wm-camera-view"><span class="wm-camera-label">Wrist View</span></div>
+                                <div class="wm-camera-view"><span class="wm-camera-label">Side View</span></div>
+                            </div>
+                            <div class="wm-action-chip"><i class="fa-solid fa-arrow-pointer"></i> Robot action &nbsp; a<sub>t</sub></div>
+                        </div>
+
+                        <div class="wm-connector"><i class="fa-solid fa-caret-right"></i></div>
+
+                        <div class="wm-stage wm-core">
+                            <div class="wm-core-badge"><i class="fa-solid fa-bolt"></i> Compact &amp; deployable</div>
+                            <div class="wm-core-title">精细操作<br><span>世界模型</span></div>
+                            <div class="wm-core-layer"><i class="fa-solid fa-cubes-stacked"></i> 多视角表征融合 <small>Fuse</small></div>
+                            <div class="wm-core-layer"><i class="fa-solid fa-forward-step"></i> 动作条件动力学 <small>Predict</small></div>
+                            <div class="wm-core-layer"><i class="fa-solid fa-hand-fist"></i> 接触感知潜空间 <small>Reason</small></div>
+                            <div class="wm-specialized-tag">专为精细操作的视觉动态与交互模式优化</div>
+                        </div>
+
+                        <div class="wm-connector"><i class="fa-solid fa-caret-right"></i></div>
+
+                        <div class="wm-stage wm-output-stage">
+                            <div class="wm-step-label"><b>02</b> 同步预测 → 决策</div>
+                            <div class="wm-heads">
+                                <div class="wm-head" style="--head-color:#38bdf8;"><i class="fa-solid fa-photo-film"></i><strong>未来多视角</strong><span>动力学预测</span></div>
+                                <div class="wm-head" style="--head-color:#22c55e;"><i class="fa-solid fa-signal"></i><strong>奖励函数</strong><span>r<sub>t</sub> · 任务进程</span></div>
+                                <div class="wm-head" style="--head-color:#f59e0b;"><i class="fa-solid fa-gauge-high"></i><strong>价值函数</strong><span>V(s<sub>t</sub>) · 长程任务</span></div>
+                            </div>
+                            <div class="wm-rollout">
+                                <div class="wm-rollout-title">预演交互 <span>无需物理世界试错</span></div>
+                                <div class="wm-rollout-track">
+                                    <div class="wm-state">s<sub>t</sub></div><i class="fa-solid fa-chevron-right wm-state-arrow"></i>
+                                    <div class="wm-state">s<sub>t+1</sub></div><i class="fa-solid fa-chevron-right wm-state-arrow"></i>
+                                    <div class="wm-state">···</div><i class="fa-solid fa-chevron-right wm-state-arrow"></i>
+                                    <div class="wm-policy-update"><i class="fa-solid fa-network-wired"></i> Model-based RL · Policy π</div>
+                                </div>
+                            </div>
+                            <div class="wm-real-loop"><i class="fa-solid fa-rotate"></i> 真机验证 → 失败反馈 → 模型与策略持续更新</div>
+                        </div>
+
+                        <div class="wm-thesis">
+                            <div class="wm-thesis-copy">
+                                <small>Core hypothesis · “smallest sufficient model”</small>
+                                <strong>不追求理解一切；打造<span>足以让机器人精准推演与行动</span>的最小模型。</strong>
+                            </div>
+                            <div class="wm-thesis-divider"></div>
+                            <div class="wm-benefits">
+                                <div class="wm-benefit"><strong>High fidelity</strong><span>高保真</span></div>
+                                <div class="wm-benefit"><strong>Fast rollout</strong><span>低延迟</span></div>
+                                <div class="wm-benefit"><strong>On-board</strong><span>易部署</span></div>
+                            </div>
+                            <div class="wm-research-badge">Ongoing research<strong>IEEE T-RO · Q4 2026 target</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>任务专用 World Model</span><span>|</span><span>Dynamics + Reward + Value</span><span>|</span><span>Real-world Model-based RL</span></div><div>内部融资资料 - 第7页</div></div>
+            </div>
+
+            <!-- DISABLED SLIDE: EGOCENTRIC DATA ENGINE -->
+            <!-- <div class="slide" id="slide-disabled-egocentric">
                 <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-database"></i> 数据引擎：第一视角人类交互 + 机器人执行闭环</h2><div class="slide-subtitle-en">Egocentric Data Engine for Embodied Scaling</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
                 <div class="slide-content">
                     <div class="grid-2">
@@ -1005,23 +1519,6 @@
                 </div>
                 <div class="slide-footer"><div class="slide-footer-left"><span>Human Priors</span><span>|</span><span>Robot Executability</span></div><div>内部融资资料 - 第7页</div></div>
             </div> -->
-
-            <!-- SLIDE 7: ARCHITECTURE -->
-            <div class="slide" id="slide-7">
-                <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-diagram-project"></i> 中训练架构</h2><div class="slide-subtitle-en">Mid-Training Platform Architecture</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
-                <div class="slide-content">
-                    <div class="arch-grid">
-                        <div class="arch-block"><i class="fa-solid fa-robot"></i><strong>用户机器人</strong><span>接入本体、相机、控制接口</span></div>
-                        <div class="arch-block"><i class="fa-solid fa-database"></i><strong>数据层</strong><span>人类第一视角 + 少量机器人执行数据</span></div>
-                        <div class="arch-block"><i class="fa-solid fa-brain"></i><strong>World Model</strong><span>未来预测、覆盖评估、失败预判</span></div>
-                        <div class="arch-block"><i class="fa-solid fa-user-gear"></i><strong>稀缺数据评价</strong><span>稀缺状态触发真人接管</span></div>
-                        <div class="arch-block"><i class="fa-solid fa-network-wired"></i><strong>Policy Training</strong><span>适配任意 VA / VLA / WAM 动作策略</span></div>
-                        <div class="arch-block"><i class="fa-solid fa-rocket"></i><strong>部署</strong><span>真实场景评测、上线与持续优化</span></div>
-                    </div>
-                    <div class="media-placeholder" style="height:210px;margin-top:28px;"><i class="fa-solid fa-image"></i><p style="font-weight:700;">[PLACEHOLDER: 更完整的平台系统架构图]</p><span style="font-size:11px;color:var(--color-text-muted);margin-top:8px;">横向 pipeline：客户模型 → LiftAI infra → 机器人上线</span></div>
-                </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>中训练架构</span><span>|</span><span>端到端闭环进化</span></div><div>内部融资资料 - 第7页</div></div>
-            </div>
 
             <!-- SLIDE 8: POST TRAINING -->
             <div class="slide" id="slide-8">
@@ -1145,7 +1642,7 @@
 
                     <div class="flow-lane"><div class="flow-node missing-box"><strong>4. Mid-Train</strong><span>世界模型发现数据稀缺位置并切换人工采集，同步优化策略模型与世界模型</span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
                     
-                    <div class="flow-node missing-box"><strong>5. Post-Train</strong><span>WM + RL 优化长尾接触</span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="flow-lane"></div><div class="flow-node missing-box"><strong>5. Post-Train</strong><span>WM + RL 优化长尾接触</span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
                     
                     <div class="flow-node"><strong>6. 部署</strong><span>真实场景部署与持续迭代</span></div></div>
                     
@@ -1160,7 +1657,7 @@
                 <div class="slide-content"><div class="grid-3" style="align-items:stretch;">
                     <div class="tech-card"><i class="fa-solid fa-key" style="font-size:28px;color:var(--color-primary);margin-bottom:14px;"></i><h3 style="font-size:20px;margin-bottom:10px;">1. 平台授权</h3><p style="font-size:13px;color:var(--color-text-muted);line-height:1.6;">年度授权：数据管理、世界模型、策略模型、评测可视化等核心能力。</p></div>
                     
-                    <div class="tech-card missing-box"><i class="fa-solid fa-cloud" style="font-size:28px;color:var(--color-primary);margin-bottom:14px;"></i><h3 style="font-size:20px;margin-bottom:10px;">2. 训练基础设施</h3><p style="font-size:13px;color:#cbd5e1;line-height:1.6;">按训练规模、GPU消耗、模型迭代次数收费。客户不必自建完整具身训练栈。</p></div>
+                    <div class="tech-card"><i class="fa-solid fa-cloud" style="font-size:28px;color:var(--color-primary);margin-bottom:14px;"></i><h3 style="font-size:20px;margin-bottom:10px;">2. 训练基础设施</h3><p style="font-size:13px;color:var(--color-text-muted);line-height:1.6;">按训练规模、GPU消耗、模型迭代次数收费。客户不必自建完整具身训练栈。</p></div>
                     
                     <div class="tech-card"><i class="fa-solid fa-screwdriver-wrench" style="font-size:28px;color:var(--color-primary);margin-bottom:14px;"></i><h3 style="font-size:20px;margin-bottom:10px;">3. 全栈场景部署</h3><p style="font-size:13px;color:var(--color-text-muted);line-height:1.6;">针对高价值垂直场景项目制交付：装配、清洁、仓储、商业服务等，形成早期现金流与场景数据壁垒。</p></div></div></div>
                 <div class="slide-footer"><div class="slide-footer-left"><span>持续性平台收入</span><span>|</span><span>高毛利场景服务</span></div><div>内部融资资料 - 第11页</div></div>
@@ -1179,7 +1676,7 @@
                 <div class="slide-content">
                     <div class="team-grid">
                         <div class="member-card active" data-member="ceo">
-                            <div class="avatar-placeholder"><i class="fa-solid fa-brain"></i></div>
+                            <div class="avatar-placeholder member-photo-frame"><img class="member-photo member-photo--ceo" src="./media/figures/yifei-ren.jpg" alt="任逸飞个人照片"></div>
                             <div class="member-name">任逸飞</div>
                             <div class="member-role">CEO / 创始人</div>
                             <div class="member-tags">
@@ -1187,9 +1684,10 @@
                                 <span class="m-tag">3D Vision</span>
                                 <span class="m-tag">AI + Finance</span>
                             </div>
+                            <a class="member-profile-link" href="https://flycole.github.io/" target="_blank" rel="noopener" onclick="event.stopPropagation();"><i class="fa-solid fa-arrow-up-right-from-square"></i> Personal Page</a>
                         </div>
                         <div class="member-card" data-member="cto">
-                            <div class="avatar-placeholder"><i class="fa-solid fa-eye"></i></div>
+                            <div class="avatar-placeholder member-photo-frame"><img class="member-photo" src="./media/figures/cheng-qian.jpg" alt="钱诚个人照片"></div>
                             <div class="member-name">钱诚</div>
                             <div class="member-role">CTO / 联合创始人</div>
                             <div class="member-tags">
@@ -1197,14 +1695,26 @@
                                 <span class="m-tag">In-Context IL</span>
                                 <span class="m-tag">Industrial Experience</span>
                             </div>
+                            <a class="member-profile-link" href="https://scholar.google.com/citations?user=lxL6FqcAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" onclick="event.stopPropagation();"><i class="fa-solid fa-arrow-up-right-from-square"></i> Google Scholar</a>
+                        </div>
+                        <div class="member-card" data-member="rl">
+                            <div class="avatar-placeholder member-photo-frame"><img class="member-photo" src="./media/figures/wenshuai-zhao.jpg" alt="赵文帅个人照片"></div>
+                            <div class="member-name">赵文帅</div>
+                            <div class="member-role">RL & 后训练负责人</div>
+                            <div class="member-tags">
+                                <span class="m-tag">Reinforcement Learning</span>
+                                <span class="m-tag">Generative Models</span>
+                                <span class="m-tag">Multimodal</span>
+                            </div>
+                            <a class="member-profile-link" href="https://wenshuaizhao.github.io/" target="_blank" rel="noopener" onclick="event.stopPropagation();"><i class="fa-solid fa-arrow-up-right-from-square"></i> Personal Page</a>
                         </div>
                     </div>
-                    <div id="team-detail-panel" class="tech-card" style="margin:30px auto 0;max-width:820px;">
+                    <div id="team-detail-panel" class="tech-card team-detail-panel">
                         <div class="detail-title" id="member-detail-title" style="font-size:18px;color:#fff;font-weight:700;margin-bottom:10px;">
                             <i class="fa-solid fa-graduation-cap"></i> 任逸飞 | CEO 创始人
                         </div>
                         <div class="detail-desc" id="member-detail-desc" style="font-size:13px;color:var(--color-text-muted);line-height:1.7;">
-                            专注机器人模仿学习、3D视觉与具身世界模型方向，具备从底层算法、真机系统到融资叙事和商业落地的复合能力。当前重点推动 M & P 平台。
+                            帝国理工计算机在读博士，专注于机器人深度模仿学习与3D计算机视觉。南开大学人工智能与金融双学位获得者。曾创立极客公园创赛冠军项目“Palette”，荣获亚马逊机器人领域杰出博士成就二等奖。具备出色的底层算法能力与开阔的商业变现洞察力。
                         </div>
                     </div>
                 </div>
@@ -1233,12 +1743,12 @@
             <!-- SLIDE 14: ROADMAP -->
             <div class="slide" id="slide-14">
                 <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-timeline"></i> 12个月关键里程碑：从 MVP 到客户部署</h2><div class="slide-subtitle-en">12-Month Roadmap and Deliverables</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
-                <div class="slide-content"><div class="roadmap-timeline"><div class="roadmap-phase" style="--phase-color:var(--color-primary);"><div class="roadmap-phase-marker">A</div><div><div class="roadmap-phase-time">0 — 4 个月</div><div class="roadmap-phase-title">Mid-Training MVP</div><div class="roadmap-phase-subhead">Technical Proof</div></div><ul class="roadmap-phase-list"><li>打通任意预训练 policy → LiftAI Mid-Train闭环 → 真机demo 的最小闭环。</li><li>完成多场景 WM OOD检测、人工接管与定向数据采集演示。</li><li>在一个核心场景中量化验证数据效率、任务成功率和迭代周期。</li></ul></div><div class="roadmap-phase" style="--phase-color:var(--color-accent);"><div class="roadmap-phase-marker">B</div><div><div class="roadmap-phase-time">4 — 8 个月</div><div class="roadmap-phase-title">Post-Training MVP & Paid Pilot</div><div class="roadmap-phase-subhead">Customer Proof</div></div><ul class="roadmap-phase-list"><li>上线World Model + RL最小后训练模块。</li><li>在contact-rich 或长尾任务上验证成功率提升。</li><li> 与 1—2 家硬件或场景客户开展联合POC，其中至少一个为付费或成本共担项目。</li><li> 沉淀首个可复用训练与评测模板。</li></ul></div><div class="roadmap-phase" style="--phase-color:#22c55e;"><div class="roadmap-phase-marker">C</div><div><div class="roadmap-phase-time">8 — 12 个月</div><div class="roadmap-phase-title">Pilot Deployment & Commercial Proof</div><div class="roadmap-phase-subhead">Business Proof</div></div><ul class="roadmap-phase-list"><li>在重点客户真实环境完成试点部署和持续运行测试。</li><li>形成客户案例、模型指标、部署效率和数据闭环证据。</li><li>获得首笔商业收入、采购意向或年度合作框架。</li><li>验证从第一个场景向第二个场景复制的可行性。</li><li>完成下一轮融资所需的技术、客户和商业数据包。</li></ul></div></div></div>
+                <div class="slide-content"><div class="roadmap-timeline"><div class="roadmap-phase" style="--phase-color:var(--color-primary);"><div class="roadmap-phase-marker">A</div><div><div class="roadmap-phase-time">0 — 4 个月</div><div class="roadmap-phase-title">中训练 MVP</div><div class="roadmap-phase-subhead">技术验证</div></div><ul class="roadmap-phase-list"><li>打通任意预训练 policy → LiftAI Mid-Train闭环 → 真机demo 的最小闭环。</li><li>完成多场景 WM OOD检测、人工接管与定向数据采集演示。</li><li>在一个核心场景中量化验证数据效率、任务成功率和迭代周期。</li></ul></div><div class="roadmap-phase" style="--phase-color:var(--color-accent);"><div class="roadmap-phase-marker">B</div><div><div class="roadmap-phase-time">4 — 8 个月</div><div class="roadmap-phase-title">后训练 MVP & 付费试验</div><div class="roadmap-phase-subhead">客户验证</div></div><ul class="roadmap-phase-list"><li>上线World Model + RL最小后训练模块。</li><li>在contact-rich 或长尾任务上验证成功率提升。</li><li> 与 1—2 家硬件或场景客户开展联合POC，其中至少一个为付费或成本共担项目。</li><li> 沉淀首个可复用训练与评测模板。</li></ul></div><div class="roadmap-phase" style="--phase-color:#22c55e;"><div class="roadmap-phase-marker">C</div><div><div class="roadmap-phase-time">8 — 12 个月</div><div class="roadmap-phase-title">规模部署 & 商业验证</div><div class="roadmap-phase-subhead">商业验证</div></div><ul class="roadmap-phase-list"><li>在重点客户真实环境完成试点部署和持续运行测试。</li><li>形成客户案例、模型指标、部署效率和数据闭环证据。</li><li>获得首笔商业收入、采购意向或年度合作框架。</li><li>验证从第一个场景向第二个场景复制的可行性。</li><li>完成下一轮融资所需的技术、客户和商业数据包。</li></ul></div></div></div>
                 <div class="slide-footer"><div class="slide-footer-left"><span>全周期并行推进</span><span>|</span><span>客户共创</span><span>|</span><span>数据闭环</span><span>|</span><span>系统产品化</span></div><div>内部融资资料 - 第14页</div></div>
             </div>
 
-            <!-- SLIDE 16: INVESTMENT HIGHLIGHTS -->
-            <div class="slide" id="slide-15">
+            <!-- SLIDE 15: INVESTMENT HIGHLIGHTS -->
+            <!-- <div class="slide" id="slide-15">
                 <div class="slide-header">
                     <div class="slide-title-group"><h2><i class="fa-solid fa-star"></i> 投资核心亮点：机器人时代的训练 Infra</h2><div class="slide-subtitle-en">Why LiftAI Wins</div></div><div class="slide-logo">LIFT<span>AI</span></div>
                 </div>
@@ -1255,11 +1765,11 @@
 
                     <div style="margin-top:34px;text-align:center;font-family:var(--font-display);font-size:28px;font-weight:700;">LiftAI 打造具身智能 <span class="hl">M & P训练基础设施平台</span>.</div></div>
                 <div class="slide-footer"><div class="slide-footer-left"><span>基础设施商业模式</span><span>|</span><span>平台经济效应</span></div><div>内部融资资料 - 第15页</div></div>
-            </div>
+            </div> -->
 
-            <!-- SLIDE 17: VISION & THANK YOU -->
-            <div class="slide" id="slide-16">
-                <div class="cover-layout"><div class="cover-badge" style="border-color:var(--color-accent);color:var(--color-accent);background:rgba(139,92,246,0.1);">Join the Physical AI Revolution</div><h1 class="cover-title" style="font-size:56px;">将物理AI真正部署在工厂里</h1><div class="cover-subtitle" style="font-size:20px;color:var(--color-text-muted);">LiftAI builds the Mid-Training and Post-Training infrastructure layer for embodied foundation models.</div><div style="margin:40px 0;background:rgba(56,189,248,0.05);border:1px solid var(--color-border);padding:20px 40px;border-radius:12px;width:60%;text-align:center;"><h4 style="font-size:16px;color:var(--color-primary);margin-bottom:8px;">具身升维科技 LiftAI</h4><p style="font-size:14px;color:#fff;">核心联络信箱：<strong>liftai2024@gmail.com</strong></p><p style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">[PLACEHOLDER: 创始人微信 / 公司官网 / Demo QR Code]</p></div><p style="font-size:11px;color:rgba(255,255,255,0.2);">© 2026 具身升维科技. 仅供投资人参考.</p></div>
+            <!-- SLIDE 15: VISION & THANK YOU -->
+            <div class="slide" id="slide-15">
+                <div class="cover-layout"><div class="cover-badge" style="border-color:var(--color-accent);color:var(--color-accent);background:rgba(139,92,246,0.1);">Join the Physical AI Revolution</div><h1 class="cover-title" style="font-size:56px;">将物理AI真正部署在工厂里</h1><div class="cover-subtitle" style="font-size:20px;color:var(--color-text-muted);">LiftAI builds the Mid-Training and Post-Training infrastructure layer for embodied foundation models.</div><div class="vision-contact-card"><div><h4>具身升维科技 LiftAI</h4><p class="vision-contact-email">核心联络信箱：<strong>liftai2024@gmail.com</strong></p><p class="vision-contact-hint"><i class="fa-brands fa-weixin"></i> 扫描二维码，添加创始人微信</p></div><img class="vision-qr" src="./media/figures/QR_code.jpg" alt="LiftAI 创始人微信二维码"></div><p style="font-size:11px;color:rgba(255,255,255,0.2);">© 2026 具身升维科技. 仅供投资人参考.</p></div>
             </div>
 
         </div>
@@ -1269,16 +1779,17 @@
     <!-- PPT INTERACTIVE SCRIPTS -->
     <script>
         // SLIDE NAVIGATION STATE
-        let currentSlide = 1;
-        const totalSlides = 16;
+        const slides = Array.from(document.querySelectorAll('#slides-container > .slide'));
+        const totalSlides = slides.length;
+        let currentSlide = Math.min(totalSlides, Math.max(1, parseInt(window.location.hash.slice(1), 10) || 1));
 
         const updateSlideUI = () => {
-            document.querySelectorAll('.slide').forEach(slide => {
+            slides.forEach(slide => {
                 slide.classList.remove('active');
                 // Pause any videos on slides leaving view so they don't keep playing in background.
                 slide.querySelectorAll('video').forEach(v => { try { v.pause(); } catch (e) {} });
             });
-            const targetSlide = document.getElementById(`slide-${currentSlide}`);
+            const targetSlide = slides[currentSlide - 1];
             if (targetSlide) {
                 targetSlide.classList.add('active');
                 // Restart any videos on the newly-active slide from the beginning.
@@ -1308,6 +1819,8 @@
             }
         };
 
+        updateSlideUI();
+
         document.getElementById('next-btn').addEventListener('click', nextSlide);
         document.getElementById('prev-btn').addEventListener('click', prevSlide);
 
@@ -1336,15 +1849,19 @@
         document.getElementById('fullscreen-btn').addEventListener('click', toggleFullScreen);
 
 
-        // FOUNDING TEAM CARD INTERACTION (Ren Yifei & Qian Cheng)
+        // FOUNDING TEAM CARD INTERACTION
         const teamData = {
             ceo: {
-                title: "任逸飞 | CEO 创始人学术背景与商业优势",
-                desc: "帝国理工计算机系在读博士，专注于机器人深度模仿学习与3D计算机视觉。南开大学人工智能与金融双学位获得者。曾创立极客公园创赛冠军项目“Palette”，荣获亚马逊机器人领域杰出博士成就二等奖。具备出色的底层算法能力与开阔的商业变现洞察力。"
+                title: "任逸飞 | CEO 创始人 学术背景与商业优势",
+                desc: "帝国理工计算机在读博士，专注于机器人深度模仿学习与3D计算机视觉。南开大学人工智能与金融双学位获得者。曾创立极客公园创赛冠军项目“Palette”，荣获亚马逊机器人领域杰出博士成就二等奖。具备出色的底层算法能力与开阔的商业变现洞察力。"
             },
             cto: {
-                title: "钱诚 | CTO 联合创始人学术积淀",
+                title: "钱诚 | CTO 联合创始人 学术积淀与工业经验",
                 desc: "帝国理工计算机在读博士，主研世界模型与模仿学习系统。慕尼黑工业大学 (TUM) 硕士学位最优秀等级完成者。曾先后担任国内头部两家具身大厂的感知及策略执行主力架构骨干，工业经验丰富。"
+            },
+            rl: {
+                title: "赵文帅 | RL & 后训练负责人 学术成果与落地经验",
+                desc: "芬兰阿尔托大学博后，德国马普所(MPI-IS)访问学者。专注强化学习、生成模型与多模态学习，具备机器人学习算法开发、数据采集与真机落地经验。当前着重推进 RL 后训练，提升具身模型在实际生产环境中的可靠性与落地能力。"
             }
         };
 
