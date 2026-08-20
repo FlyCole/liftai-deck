@@ -1502,14 +1502,14 @@
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 22px;
-            min-height: 292px;
+            min-height: 310px;
         }
         .training-stage-card {
             --stage-color: var(--color-primary);
             position: relative;
             min-width: 0;
-            min-height: 292px;
-            padding: 17px 17px 15px;
+            min-height: 310px;
+            padding: 16px 17px 14px;
             display: flex;
             flex-direction: column;
             overflow: visible;
@@ -1593,18 +1593,18 @@
             line-height: 1;
         }
         .training-stage-desc {
-            min-height: 68px;
+            min-height: 62px;
             color: #cbd5e1;
             font-size: 10.5px;
             line-height: 1.6;
         }
         .training-example-label {
-            margin: 10px 0 7px;
-            padding-top: 8px;
+            margin: 4px 0 8px;
+            padding-top: 5px;
             border-top: 1px solid rgba(148, 163, 184, 0.11);
             color: #64748b;
             font-family: var(--font-display);
-            font-size: 7px;
+            font-size: 8.5px;
             font-weight: 700;
             letter-spacing: 1.2px;
             text-transform: uppercase;
@@ -1612,12 +1612,12 @@
         .training-examples {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 6px;
+            gap: 8px;
         }
         .training-example {
             min-width: 0;
-            min-height: 27px;
-            padding: 5px 7px;
+            min-height: 35px;
+            padding: 7px 9px;
             display: flex;
             align-items: center;
             gap: 5px;
@@ -1625,18 +1625,18 @@
             border-radius: 6px;
             background: rgba(2, 6, 23, 0.44);
             color: #94a3b8;
-            font-size: 8px;
+            font-size: 10px;
             line-height: 1.25;
         }
         .training-example i {
             flex: 0 0 auto;
             color: var(--stage-color);
-            font-size: 7px;
+            font-size: 8px;
         }
         .training-stage-outcome {
-            min-height: 34px;
-            margin-top: auto;
-            padding: 7px 9px;
+            min-height: 40px;
+            margin-top: 9px;
+            padding: 8px 10px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1645,18 +1645,18 @@
             background: color-mix(in srgb, var(--stage-color) 8%, transparent);
             color: #e2e8f0;
             font-family: var(--font-display);
-            font-size: 9px;
+            font-size: 10.5px;
             font-weight: 700;
         }
         .training-stage-outcome small {
             color: var(--stage-color);
-            font-size: 6px;
+            font-size: 7px;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
         .training-focus-ribbon {
             min-height: 42px;
-            margin-top: 13px;
+            margin-top: 8px;
             padding: 8px 14px;
             display: flex;
             align-items: center;
@@ -2427,7 +2427,7 @@
             margin-bottom: 2px;
             color: var(--color-primary);
             font-family: var(--font-display);
-            font-size: 6.5px;
+            font-size: 7.5px;
             font-weight: 700;
             letter-spacing: 1.1px;
             text-transform: uppercase;
@@ -2435,7 +2435,7 @@
         .biz-card-title {
             color: #fff;
             font-family: var(--font-display);
-            font-size: 15px;
+            font-size: 16.5px;
             font-weight: 700;
             line-height: 1.2;
         }
@@ -2446,7 +2446,7 @@
             background: rgba(56, 189, 248, 0.06);
             color: var(--color-primary);
             font-family: var(--font-display);
-            font-size: 6px;
+            font-size: 7px;
             font-weight: 700;
             letter-spacing: .7px;
             text-transform: uppercase;
@@ -2455,7 +2455,7 @@
         .biz-card-lead {
             margin: 0 0 8px;
             color: #cbd5e1;
-            font-size: 8.5px;
+            font-size: 9.5px;
             line-height: 1.4;
         }
         .biz-format {
@@ -2469,7 +2469,7 @@
             border-radius: 7px;
             background: rgba(56, 189, 248, 0.055);
             color: #dbeafe;
-            font-size: 8.5px;
+            font-size: 9.5px;
             font-weight: 600;
         }
         .biz-format i { color: var(--color-primary); }
@@ -2491,7 +2491,7 @@
             border-radius: 6px;
             background: rgba(2, 6, 23, 0.4);
             color: #cbd5e1;
-            font-size: 8px;
+            font-size: 9px;
             line-height: 1.3;
         }
         .biz-list li::before {
@@ -2500,16 +2500,16 @@
             left: 7px;
             color: var(--color-primary);
             font-family: var(--font-display);
-            font-size: 6px;
+            font-size: 7px;
             font-weight: 700;
         }
         .biz-card.is-oem { justify-content: flex-start; }
         .biz-oem-core {
             flex: 1;
             display: grid;
-            grid-template-columns: 1.1fr .9fr;
-            align-items: center;
-            gap: 18px;
+            grid-template-columns: minmax(0, 1fr);
+            align-items: stretch;
+            gap: 0;
         }
         .biz-oem-core strong {
             display: block;
@@ -2526,11 +2526,14 @@
         }
         .biz-oem-modules {
             display: grid;
-            gap: 6px;
+            grid-template-rows: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            width: 100%;
+            height: 100%;
         }
         .biz-oem-modules div {
-            min-height: 32px;
-            padding: 7px 9px;
+            min-height: 0;
+            padding: 8px 12px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -2538,7 +2541,7 @@
             border-radius: 6px;
             background: rgba(2, 6, 23, 0.34);
             color: #cbd5e1;
-            font-size: 8px;
+            font-size: 9.5px;
         }
         .biz-oem-modules i {
             width: 16px;
@@ -3563,7 +3566,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>任务专用 World Model</span><span>|</span><span>Dynamics + Reward + Value</span><span>|</span><span>Real-world Model-based RL</span></div><div>内部融资资料 - 第6页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>任务专用 World Model</span><span>|</span><span>动力学 + 奖励 + 价值</span><span>|</span><span>真实世界 Model-based RL</span></div><div>内部融资资料 - 第6页</div></div>
             </div>
 
             <!-- SLIDE 11: CURRENT WORLD MODEL PERFORMANCE -->
@@ -3597,7 +3600,7 @@
                         <div class="wm-performance-card"><div class="wm-performance-row-labels" aria-hidden="true"><span style="--row-color:#38bdf8;">真实视角</span><span style="--row-color:#8b5cf6;">WM预测</span><span style="--row-color:#f59e0b;">差值</span></div><video autoplay loop muted playsinline preload="metadata" aria-label="Autoregressive rollout scenario 10"><source src="./media/wam_ar/ar_09.mp4" type="video/mp4"></video></div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>Fully Autoregressive</span><span>|</span><span>Multi-view Alignment</span><span>|</span><span>Explicit Error Visualization</span></div><div>内部融资资料 - 第7页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>自回归</span><span>|</span><span>多视角对齐</span><span>|</span><span>物理对齐</span></div><div>内部融资资料 - 第7页</div></div>
             </div>
 
 
@@ -3658,7 +3661,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>Capability Gap</span><span>|</span><span>Bridge Adaptation</span><span>|</span><span>In-Context Adaptation</span></div><div>内部融资资料 - 第8页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>缺失能力</span><span>|</span><span>补齐断层</span><span>|</span><span>上下文学习能力</span></div><div>内部融资资料 - 第8页</div></div>
             </div>
 
             <!-- DISABLED SLIDE: EGOCENTRIC DATA ENGINE -->
@@ -3964,10 +3967,10 @@
                                 <span class="biz-revenue-tag">未来</span>
                             </div>
                             <div class="biz-oem-core">
-                                <div>
+                                <!-- <div>
                                     <strong>向 OEM 开放<br><span>中训练与后训练能力</span></strong>
                                     <p>从单点项目交付，逐步走向可复用、可扩展的训练平台。</p>
-                                </div>
+                                </div> -->
                                 <div class="biz-oem-modules">
                                     <div><i class="fa-solid fa-database"></i> Mid-Training 能力</div>
                                     <div><i class="fa-solid fa-sliders"></i> Post-Training 能力</div>
