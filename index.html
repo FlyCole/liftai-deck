@@ -1728,16 +1728,18 @@
             display: grid;
             grid-template-columns: 0.78fr 1.22fr;
             gap: 20px;
-            min-height: 258px;
+            min-height: 280px;
         }
         .ic-mid-gap-card,
         .ic-mid-engine-card {
-            min-height: 258px;
+            min-height: 280px;
             padding: 19px 20px;
             border-radius: 13px;
             background: rgba(10, 18, 35, 0.84);
         }
         .ic-mid-gap-card {
+            display: flex;
+            flex-direction: column;
             border: 1px solid rgba(239, 68, 68, 0.25);
         }
         .ic-mid-engine-card {
@@ -1765,10 +1767,12 @@
             line-height: 1.25;
         }
         .ic-mid-problems {
+            flex: 1;
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            justify-content: space-evenly;
+            gap: 6px;
         }
         .ic-mid-problems li {
             position: relative;
@@ -1860,15 +1864,90 @@
             line-height: 1.3;
         }
         .ic-mid-principle i { color: #a78bfa; font-size: 10px; }
+        .ic-mid-engine-layout {
+            height: 242px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 242px;
+            gap: 12px;
+        }
+        .ic-mid-engine-copy {
+            min-width: 0;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .ic-mid-engine-copy .ic-mid-card-title {
+            margin-bottom: 10px;
+        }
+        .ic-mid-story-copy {
+            min-width: 0;
+            min-height: 0;
+            flex: 1;
+            display: grid;
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+        }
+        .ic-mid-story-step {
+            min-width: 0;
+            padding: 9px 11px;
+            display: grid;
+            grid-template-columns: 28px minmax(0, 1fr);
+            align-items: center;
+            gap: 9px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 8px;
+            background: rgba(139, 92, 246, 0.055);
+        }
+        .ic-mid-story-number {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 7px;
+            background: rgba(139, 92, 246, 0.16);
+            color: #c4b5fd;
+            font-family: var(--font-display);
+            font-size: 10px;
+            font-weight: 700;
+        }
+        .ic-mid-story-step strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #fff;
+            font-size: 11.2px;
+            line-height: 1.3;
+        }
+        .ic-mid-story-step p {
+            color: #94a3b8;
+            font-size: 8.6px;
+            line-height: 1.4;
+        }
+        .ic-mid-story-step p span { color: #c4b5fd; }
+        .ic-mid-story-video {
+            min-width: 0;
+            min-height: 0;
+            overflow: hidden;
+            border: 1px solid rgba(139, 92, 246, 0.34);
+            border-radius: 9px;
+            background: #000;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+        }
+        .ic-mid-story-video video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
         .ic-mid-gains {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 10px;
-            margin-top: 14px;
+            margin-top: 10px;
         }
         .ic-mid-gain {
-            min-height: 78px;
-            padding: 11px 13px;
+            min-height: 60px;
+            padding: 7px 13px;
             display: grid;
             grid-template-columns: 38px 1fr;
             align-items: center;
@@ -3110,9 +3189,7 @@
         .mid-merged-left {
             min-width: 0;
             min-height: 0;
-            display: grid;
-            grid-template-rows: 154px minmax(0, 1fr);
-            gap: 10px;
+            display: block;
         }
         .mid-compact-gap-block {
             padding: 11px 12px;
@@ -3201,6 +3278,41 @@
             font-size: 8.8px;
             line-height: 1.35;
         }
+        .mid-unified-gap-card {
+            height: 100%;
+        }
+        .mid-unified-gap-card .mid-bridge-title {
+            margin: 4px 0 10px;
+            font-size: 15px;
+        }
+        .mid-unified-gap-card .mid-bridge-list.is-four {
+            min-height: 0;
+            flex: 1;
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+        }
+        .mid-unified-gap-card .mid-bridge-list.is-four .mid-bridge-item {
+            min-height: 0;
+            padding: 10px 11px;
+            grid-template-columns: 22px minmax(0, 1fr);
+            column-gap: 8px;
+        }
+        .mid-unified-gap-card .mid-bridge-list.is-four .mid-bridge-item i {
+            font-size: 12px;
+        }
+        .mid-unified-gap-card .mid-bridge-list.is-four .mid-bridge-item strong {
+            font-size: 10.5px;
+        }
+        .mid-unified-gap-card .mid-bridge-list.is-four .mid-bridge-item p {
+            margin-top: 4px;
+            font-size: 9px;
+            line-height: 1.4;
+        }
+        .mid-unified-gap-card .mid-bridge-summary {
+            margin-top: 9px;
+            padding: 8px 10px;
+            font-size: 9.2px;
+        }
         .mid-merged-main .mid-evidence-panel {
             height: 100%;
             padding: 12px;
@@ -3231,6 +3343,205 @@
         .mid-merged-main .mid-paper-proof p {
             font-size: 8.3px;
             line-height: 1.35;
+        }
+
+        /* P8: full-width capability bridge */
+        .mid-why-slide .mid-merged-main {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 0;
+        }
+        .mid-why-slide .mid-merged-left { width: 100%; }
+        .mid-why-slide .mid-unified-gap-card {
+            padding: 18px 20px;
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            border-radius: 12px;
+            background: rgba(10, 18, 33, 0.9);
+        }
+        .mid-why-slide .mid-unified-gap-card .mid-bridge-title {
+            margin: 5px 0 14px;
+            color: #f8fafc;
+            font-size: 19px;
+        }
+        .mid-why-slide .mid-unified-gap-card .mid-bridge-list.is-four {
+            gap: 10px;
+        }
+        .mid-why-slide .mid-unified-gap-card .mid-bridge-list.is-four .mid-bridge-item {
+            min-height: 0;
+            padding: 14px 18px;
+            grid-template-columns: 38px minmax(0, 1fr);
+            column-gap: 12px;
+            align-content: center;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.018);
+        }
+        .mid-why-slide .mid-unified-gap-card .mid-bridge-list.is-four .mid-bridge-item i {
+            width: 38px;
+            height: 38px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 7px;
+            background: rgba(56, 189, 248, 0.09);
+            color: #38bdf8;
+            font-size: 15px;
+        }
+        .mid-why-slide .mid-unified-gap-card .mid-bridge-list.is-four .mid-bridge-item strong {
+            color: #f1f5f9;
+            font-size: 14px;
+        }
+        .mid-why-slide .mid-unified-gap-card .mid-bridge-list.is-four .mid-bridge-item p {
+            margin-top: 6px;
+            color: #94a3b8;
+            font-size: 11.5px;
+            line-height: 1.45;
+        }
+        .mid-why-slide .mid-unified-gap-card .mid-bridge-summary {
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-left: 2px solid #38bdf8;
+            background: rgba(255, 255, 255, 0.025);
+            color: #cbd5e1;
+            font-size: 11.5px;
+            line-height: 1.4;
+        }
+
+        /* NEW DATA PARADIGM: VIBEDEMO */
+        .vibedemo-slide .slide-header {
+            margin-bottom: 14px;
+            padding-bottom: 11px;
+        }
+        .vibedemo-slide .slide-content { justify-content: flex-start; }
+        .vibedemo-slide .slide-footer { margin-top: 10px; }
+        .vibedemo-layout {
+            height: 423px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+        .vibedemo-media-panel,
+        .vibedemo-roadmap-panel {
+            min-width: 0;
+            min-height: 0;
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            border-radius: 12px;
+            background: rgba(10, 18, 33, 0.9);
+        }
+        .vibedemo-media-panel {
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+        .vibedemo-video {
+            height: 278px;
+            flex: 0 0 278px;
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            border-radius: 9px;
+            background: #000;
+        }
+        .vibedemo-video video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .vibedemo-definition {
+            min-height: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .vibedemo-kicker {
+            margin-bottom: 4px;
+            color: #38bdf8;
+            font-family: var(--font-display);
+            font-size: 7px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+        .vibedemo-definition h3,
+        .vibedemo-roadmap-title {
+            color: #f8fafc;
+            font-family: var(--font-display);
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+        .vibedemo-definition p {
+            margin-top: 6px;
+            color: #94a3b8;
+            font-size: 9.6px;
+            line-height: 1.5;
+        }
+        .vibedemo-tags {
+            margin-top: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .vibedemo-tag {
+            padding: 4px 7px;
+            border: 1px solid rgba(56, 189, 248, 0.16);
+            border-radius: 999px;
+            background: rgba(56, 189, 248, 0.055);
+            color: #bae6fd;
+            font-size: 7.8px;
+            font-weight: 600;
+        }
+        .vibedemo-roadmap-panel {
+            padding: 17px;
+            display: flex;
+            flex-direction: column;
+        }
+        .vibedemo-roadmap-title {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+        .vibedemo-steps {
+            min-height: 0;
+            flex: 1;
+            display: grid;
+            grid-template-rows: repeat(3, minmax(0, 1fr));
+            gap: 9px;
+        }
+        .vibedemo-step {
+            min-height: 0;
+            padding: 12px 13px;
+            display: grid;
+            grid-template-columns: 38px minmax(0, 1fr);
+            align-items: center;
+            gap: 11px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.018);
+        }
+        .vibedemo-step-number {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: rgba(56, 189, 248, 0.09);
+            color: #38bdf8;
+            font-family: var(--font-display);
+            font-size: 11.5px;
+            font-weight: 700;
+        }
+        .vibedemo-step strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #f1f5f9;
+            font-size: 13.5px;
+        }
+        .vibedemo-step p {
+            color: #8b9aae;
+            font-size: 10.5px;
+            line-height: 1.45;
         }
 
     </style>
@@ -3403,25 +3714,24 @@
                             </ul>
                         </div>
                         <div class="ic-mid-engine-card" style="--card-color:#8b5cf6;">
-                            <div class="ic-mid-card-label">LiftAI Approach · Context as Task Interface</div>
-                            <div class="ic-mid-card-title">一次 Mid-Train，少量示范快速适应</div>
-                            <div class="ic-mid-pipeline">
-                                <div class="ic-mid-node">
-                                    <i class="fa-solid fa-photo-film"></i><small>Context</small><strong>少量任务示范</strong><span>产品差异 · 操作意图</span>
+                            <div class="ic-mid-engine-layout">
+                                <div class="ic-mid-engine-copy">
+                                    <div class="ic-mid-card-label">LiftAI Approach · Context as Task Interface</div>
+                                    <div class="ic-mid-card-title">统一模型，<br>少量示范快速适应</div>
+                                    <div class="ic-mid-story-copy">
+                                        <div class="ic-mid-story-step">
+                                            <span class="ic-mid-story-number">01</span>
+                                            <div><strong>人类示范定义当前任务</strong><p>解决语言描述不清的<span>长序列 / 抽象任务 / 接触密集型任务</span>。</p></div>
+                                        </div>
+                                        <div class="ic-mid-story-step">
+                                            <span class="ic-mid-story-number">02</span>
+                                            <div><strong>模型内部关联当前帧和 Context 帧</strong><p>从视觉对应关系中形成隐式的 <span>Visual-Grounded Control</span>。</p></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="ic-mid-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-                                <div class="ic-mid-node is-core">
-                                    <i class="fa-solid fa-brain"></i><small>Mid-Train</small><strong>In-Context Policy + World Model</strong><span>历史条件 · 子目标 · 长时序建模</span>
+                                <div class="ic-mid-story-video">
+                                    <video autoplay loop muted playsinline preload="metadata" aria-label="SynICL in-context imitation learning demonstration"><source src="./media/ICIL/synicl_video.mp4" type="video/mp4"></video>
                                 </div>
-                                <div class="ic-mid-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-                                <div class="ic-mid-node">
-                                    <i class="fa-solid fa-robot"></i><small>Deploy</small><strong>可执行新策略</strong><span>少样本适应 · 无需逐任务重训</span>
-                                </div>
-                            </div>
-                            <div class="ic-mid-principles">
-                                <div class="ic-mid-principle"><i class="fa-solid fa-layer-group"></i><span>示范定义当前任务</span></div>
-                                <div class="ic-mid-principle"><i class="fa-solid fa-clock-rotate-left"></i><span>历史保持执行进度</span></div>
-                                <div class="ic-mid-principle"><i class="fa-solid fa-route"></i><span>子目标拆解长序列</span></div>
                             </div>
                         </div>
                     </div>
@@ -3439,7 +3749,7 @@
             <div class="slide icwm-slide" id="slide-6" data-slide-key="ic-research">
                 <div class="slide-header">
                     <div class="slide-title-group">
-                        <h2><i class="fa-solid fa-flask-vial"></i> In-Context 研究进展：少量示范，快速适应新任务</h2>
+                        <h2><i class="fa-solid fa-flask-vial"></i> In-Context 研究进展</h2>
                         <div class="slide-subtitle-en">Research Evidence for Scalable In-Context Imitation Learning</div>
                     </div>
                     <div class="slide-logo">LIFT<span>AI</span></div>
@@ -3480,6 +3790,55 @@
                     </div>
                 </div>
                 <div class="slide-footer"><div class="slide-footer-left"><span>In-Context Imitation Learning</span></div><div>内部融资资料 - 第10页</div></div>
+            </div>
+
+            <!-- NEW DATA PARADIGM: VIBEDEMO -->
+            <div class="slide vibedemo-slide" id="slide-vibedemo" data-slide-key="vibedemo">
+                <div class="slide-header">
+                    <div class="slide-title-group">
+                        <h2><i class="fa-solid fa-wave-square"></i> 新数据范式：VibeDemo</h2>
+                        <div class="slide-subtitle-en">Capture Intent, Not Trajectories · Scalable Mid-Training Data</div>
+                    </div>
+                    <div class="slide-logo">LIFT<span>AI</span></div>
+                </div>
+                <div class="slide-content">
+                    <div class="vibedemo-layout">
+                        <div class="vibedemo-media-panel">
+                            <div class="vibedemo-video">
+                                <video autoplay loop muted playsinline preload="metadata" aria-label="VibeDemo synthetic data generation"><source src="./media/ICIL/vibe_demo.mp4" type="video/mp4"></video>
+                            </div>
+                            <div class="vibedemo-definition">
+                                <div class="vibedemo-kicker">Core Idea</div>
+                                <h3>抓住任务意图，而非复刻动作轨迹</h3>
+                                <p>LiftAI 将人类视频与程序化仿真抽象为 VibeDemo：只保留任务意图、物体交互关系和关键动作结构，再由模型转译为不同机器人可执行的策略。</p>
+                                <div class="vibedemo-tags">
+                                    <span class="vibedemo-tag">低成本批量生成</span>
+                                    <span class="vibedemo-tag">摆脱特定本体与物理条件</span>
+                                    <span class="vibedemo-tag">跨机器人策略转译</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vibedemo-roadmap-panel">
+                            <div class="vibedemo-kicker">LiftAI Roadmap</div>
+                            <div class="vibedemo-roadmap-title">从低成本能力覆盖，到策略自主改进</div>
+                            <div class="vibedemo-steps">
+                                <div class="vibedemo-step">
+                                    <div class="vibedemo-step-number">01</div>
+                                    <div><strong>低成本中训练，快速达到 70–80%</strong><p>先用规模化 VibeDemo 建立可用的泛化能力，再用高质量真机数据与后训练将成功率推向生产级 100%。</p></div>
+                                </div>
+                                <div class="vibedemo-step">
+                                    <div class="vibedemo-step-number">02</div>
+                                    <div><strong>Synthetic → Video VibeDemo</strong><p>当前使用程序化生成数据；下一步直接从人类 / Ego 视频恢复任务结构，扩大泛化范围，并提高动作空间准确性。</p></div>
+                                </div>
+                                <div class="vibedemo-step">
+                                    <div class="vibedemo-step-number">03</div>
+                                    <div><strong>In-Context Reward Model</strong><p>用 VibeDemo 直接定义奖励，无需为新任务单独采集 Reward 微调数据，即可启动后训练 RL，让策略持续 Self-Improve。</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>任务意图优先</span><span>|</span><span>低成本规模化</span><span>|</span><span>策略自我改进</span></div><div>内部融资资料 - 第11页</div></div>
             </div>
 
             <!-- DISABLED SLIDE: MID TRAINING
@@ -3544,7 +3903,7 @@
                                 <div class="wm-camera-view"><img src="./media/figures/right_view.png" alt="Right camera view of the robot workspace"><span class="wm-camera-label">Right View</span></div>
                                 <div class="wm-camera-view"><img src="./media/figures/wrist_view.png" alt="Robot wrist camera view"><span class="wm-camera-label">Wrist View</span></div>
                             </div>
-                            <div class="wm-action-chip"><i class="fa-solid fa-arrow-pointer"></i> Robot action &nbsp; a<sub>t</sub></div>
+                            <div class="wm-action-chip"><i class="fa-solid fa-arrow-pointer"></i> Robot action &nbsp; a_t</sub></div>
                         </div>
 
                         <div class="wm-connector"><i class="fa-solid fa-caret-right"></i></div>
@@ -3645,50 +4004,17 @@
                     <div class="mid-merged-layout">
                         <div class="mid-merged-main">
                             <div class="mid-merged-left">
-                                <div class="mid-compact-gap-block">
-                                    <div class="mid-section-kicker">Capability Gaps</div>
-                                    <div class="mid-compact-gap-title">预训练模型到具身执行之间的四类断层</div>
-                                    <div class="mid-gap-mini-grid">
-                                        <div class="mid-gap-mini-card"><i class="fa-solid fa-arrows-left-right-to-line"></i><strong>动作空间断层</strong><p>理解语义，却缺少连续、可执行的机器人动作表示。</p></div>
-                                        <div class="mid-gap-mini-card"><i class="fa-solid fa-robot"></i><strong>跨本体断层</strong><p>关节、传感器和控制频率不同，策略难以直接迁移。</p></div>
-                                        <div class="mid-gap-mini-card"><i class="fa-solid fa-brain"></i><strong>预训练能力遗忘</strong><p>直接微调容易覆盖通用常识与原有泛化能力。</p></div>
-                                        <div class="mid-gap-mini-card"><i class="fa-solid fa-route"></i><strong>长序列断层</strong><p>短时模仿难以建模子目标、错误恢复与长期依赖。</p></div>
-                                    </div>
-                                </div>
-                                <div class="mid-bridge-card is-compact">
-                                    <div class="mid-section-kicker">What Mid-Training Builds</div>
-                                    <div class="mid-bridge-title">中训练对应补齐四项基础能力</div>
+                                <div class="mid-bridge-card is-compact mid-unified-gap-card">
+                                    <div class="mid-section-kicker">Capability Bridge</div>
+                                    <div class="mid-bridge-title">中训练补齐预训练模型到具身执行之间的四类断层</div>
                                     <div class="mid-bridge-list is-four">
-                                        <div class="mid-bridge-item"><i class="fa-solid fa-code-branch"></i><strong>动作表示统一</strong><p>将语义意图映射为可执行的动作 token 与轨迹。</p></div>
-                                        <div class="mid-bridge-item"><i class="fa-solid fa-shuffle"></i><strong>跨本体适配</strong><p>共享能力层结合本体适配器，复用跨机器人数据。</p></div>
-                                        <div class="mid-bridge-item"><i class="fa-solid fa-layer-group"></i><strong>知识保持学习</strong><p>吸收机器人经验，同时保留预训练世界知识。</p></div>
-                                        <div class="mid-bridge-item"><i class="fa-solid fa-timeline"></i><strong>长序列建模</strong><p>利用历史、子目标和 World Model 支撑长期推理。</p></div>
+                                        <div class="mid-bridge-item"><i class="fa-solid fa-code-branch"></i><strong>动作空间断层</strong><p>统一动作表示，将语义意图映射为可执行的动作 Token 与轨迹。</p></div>
+                                        <div class="mid-bridge-item"><i class="fa-solid fa-shuffle"></i><strong>跨本体断层</strong><p>共享能力层结合本体适配器，复用不同机器人的数据与技能。</p></div>
+                                        <div class="mid-bridge-item"><i class="fa-solid fa-layer-group"></i><strong>预训练能力遗忘</strong><p>吸收机器人交互经验，同时保留预训练获得的世界知识与泛化能力。</p></div>
+                                        <div class="mid-bridge-item"><i class="fa-solid fa-timeline"></i><strong>长序列断层</strong><p>利用历史、子目标和 World Model 建模长期依赖与错误恢复。</p></div>
                                     </div>
                                     <div class="mid-bridge-summary">中训练不追求极限准确率，而是补齐通用模型到具身执行之间的关键能力断层，为后训练提供更强、更稳、更通用的起点。</div>
                                 </div>
-                            </div>
-                            <div class="mid-evidence-panel">
-                                <div class="mid-evidence-claim"><small>Research Signal</small><strong>Agent 能力越强，内部掌握的世界模型必须越准确，且 In-Context 能力越显著</strong></div>
-                                <div class="mid-paper-proof">
-                                    <div class="paper-meta">Google DeepMind · ICML 2025</div>
-                                    <strong>General Agents Contain World Models</strong>
-                                    <p>能够处理复杂、多步骤任务的通用 Agent，内部必须形成对环境运行规律的准确理解。</p>
-                                </div>
-                                <div class="mid-paper-proof">
-                                    <div class="paper-meta">Meta · 2025 · arXiv:2510.08558</div>
-                                    <strong>Agent Learning via Early Experience</strong>
-                                    <p>以早期经验和交互反馈作为“中训练”范式，为 Agent 掌握世界能力提供关键框架。</p>
-                                </div>
-                                <a class="mid-paper-proof" href="https://research.nvidia.com/labs/gear/robottt/" target="_blank" rel="noopener">
-                                    <div class="paper-meta">NVIDIA · Stanford · 2026</div>
-                                    <strong>RoboTTT: Context Scaling for Robot Policies</strong>
-                                    <p>通过中训练扩展至 8K 视觉动作上下文，单个人类视频示范即可完成未见任务；8K Context 相比 1K 提升 62%，证明 Context 是机器人基础模型的重要 Scaling 维度。</p>
-                                </a>
-                                <a class="mid-paper-proof" href="https://arxiv.org/abs/2607.06988" target="_blank" rel="noopener">
-                                    <div class="paper-meta">PKU · Galbot · 2026</div>
-                                    <strong>WAM-TTT: Steering World-Action Models by Watching Human Play</strong>
-                                    <p>在冻结 WAM 中写入轻量自适应记忆，仅用无标注人类视频即可在测试时适配，无需机器人动作、人工标注或任务微调。</p>
-                                </a>
                             </div>
                         </div>
                         <div class="mid-icl-transition">
@@ -3733,7 +4059,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>WM + RL</span><span>|</span><span>长尾操作</span></div><div>内部融资资料 - 第11页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>WM + RL</span><span>|</span><span>长尾操作</span></div><div>内部融资资料 - 第12页</div></div>
             </div>
 
             <!-- SLIDE 13: DEPLOYMENT RESULT -->
@@ -3823,7 +4149,7 @@
                         <span>|</span>
                         <span>商业价值</span>
                     </div>
-                    <div>内部融资资料 - 第12页</div>
+                    <div>内部融资资料 - 第13页</div>
                 </div>
             </div>
 
@@ -3866,7 +4192,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>Lift-0</span><span>|</span><span>双臂机器人平台</span><span>|</span><span>真实场景部署</span></div><div>内部融资资料 - 第13页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>Lift-0</span><span>|</span><span>双臂机器人平台</span><span>|</span><span>真实场景部署</span></div><div>内部融资资料 - 第14页</div></div>
             </div>
 
             <!-- DEPLOYMENT SCENARIOS -->
@@ -3918,11 +4244,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>灵活操作</span><span>|</span><span>多场景复用</span><span>|</span><span>规模化落地</span></div><div>内部融资资料 - 第14页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>灵活操作</span><span>|</span><span>多场景复用</span><span>|</span><span>规模化落地</span></div><div>内部融资资料 - 第15页</div></div>
             </div>
 
             <!-- SLIDE 14: CUSTOMER WORKFLOW -->
-            <div class="slide" id="slide-14">
+            <!-- <div class="slide" id="slide-14">
                 <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-person-running"></i> 客户工作流：从模型到真实机器人上线</h2><div class="slide-subtitle-en">Customer Workflow: Bring Any Model, Launch Any Robot</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
                 <div class="slide-content">
                     <div class="flow-lane"><div class="flow-node"><strong>1. 预训练模型</strong><span>客户选择开源底座或 LiftAI 自研模型</span></div><div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
@@ -3939,8 +4265,8 @@
                     
                     <div style="margin-top:30px;text-align:center;font-size:28px;font-family:var(--font-display);font-weight:700;">我们帮助机器人<span class="hl">落地真实场景</span>, 而不仅是产出文章。</div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>客户工作流</span><span>|</span><span>面向落地的基础建设</span></div><div>内部融资资料 - 第15页</div></div>
-            </div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>客户工作流</span><span>|</span><span>面向落地的基础建设</span></div><div>内部融资资料 - 第16页</div></div>
+            </div> -->
 
             <!-- SLIDE 15: BUSINESS MODEL -->
             <div class="slide biz-slide" id="slide-15">
@@ -3969,7 +4295,7 @@
                             <div class="biz-card-head">
                                 <div class="biz-card-icon"><i class="fa-solid fa-key"></i></div>
                                 <div><div class="biz-card-phase">02 · Scale</div><div class="biz-card-title">年度软件许可</div></div>
-                                <span class="biz-revenue-tag">Recurring</span>
+                                <span class="biz-revenue-tag">许可证</span>
                             </div>
                             <ol class="biz-list">
                                 <li>同一工艺内新 SKU 快速适配</li>
@@ -4142,7 +4468,7 @@
                                 <ul class="roadmap-phase-list">
                                     <li>标准化 / 模块化中后训练模式。</li>
                                     <li>与阶段A的2-3个测试客户形成合作并拓展新的优势场景客户。</li>
-                                    <li>形成首个200万级商业订单或合作框架。</li>
+                                    <li>形成首个500万级商业订单或合作框架。</li>
                                 </ul>
                             </div>
                             <div class="roadmap-side roadmap-side-team">
@@ -4168,7 +4494,7 @@
                                     <li>在核心场景内规模化部署。</li>
                                     <li>拓展3-4个核心下游场景。</li>
                                     <li>标准化 / 模块化更为成熟，实现一定平台化能力。</li>
-                                    <li>形成1000万量级商业订单或合作框架。</li>
+                                    <li>形成1500万量级商业订单或合作框架。</li>
                                 </ul>
                             </div>
                             <div class="roadmap-side roadmap-side-team">
@@ -4218,10 +4544,11 @@
         // Mid-Train narrative immediately after the World Model evidence pages.
         const icMidTrainSlide = document.querySelector('[data-slide-key="ic-mid-train"]');
         const icResearchSlide = document.querySelector('[data-slide-key="ic-research"]');
+        const vibeDemoSlide = document.querySelector('[data-slide-key="vibedemo"]');
         const midImportanceSlide = document.querySelector('[data-slide-key="mid-importance"]');
         const wmPerformanceSlide = document.querySelector('[data-slide-key="wm-performance"]');
-        if (midImportanceSlide && icMidTrainSlide && icResearchSlide && wmPerformanceSlide) {
-            wmPerformanceSlide.after(midImportanceSlide, icMidTrainSlide, icResearchSlide);
+        if (midImportanceSlide && icMidTrainSlide && icResearchSlide && vibeDemoSlide && wmPerformanceSlide) {
+            wmPerformanceSlide.after(midImportanceSlide, icMidTrainSlide, icResearchSlide, vibeDemoSlide);
         }
 
         // SLIDE NAVIGATION STATE
