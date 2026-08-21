@@ -89,6 +89,9 @@
         #control-bar:hover {
             opacity: 1;
         }
+        body.export-mode #control-bar {
+            display: none !important;
+        }
 
         .btn-ctrl {
             background: none;
@@ -3505,23 +3508,23 @@
             min-height: 0;
             flex: 1;
             display: grid;
-            grid-template-rows: repeat(3, minmax(0, 1fr));
-            gap: 9px;
+            grid-template-rows: repeat(4, minmax(0, 1fr));
+            gap: 7px;
         }
         .vibedemo-step {
             min-height: 0;
-            padding: 12px 13px;
+            padding: 8px 12px;
             display: grid;
-            grid-template-columns: 38px minmax(0, 1fr);
+            grid-template-columns: 34px minmax(0, 1fr);
             align-items: center;
-            gap: 11px;
+            gap: 10px;
             border: 1px solid rgba(148, 163, 184, 0.1);
             border-radius: 8px;
             background: rgba(255, 255, 255, 0.018);
         }
         .vibedemo-step-number {
-            width: 38px;
-            height: 38px;
+            width: 34px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -3553,7 +3556,7 @@
         <!-- PRESENTATION CONTROL BAR -->
         <div id="control-bar">
             <button class="btn-ctrl" id="prev-btn" title="上一张 (Left Arrow)"><i class="fa-solid fa-chevron-left"></i></button>
-            <div id="slide-indicator">1 / 17</div>
+            <div id="slide-indicator">1 / 19</div>
             <button class="btn-ctrl" id="next-btn" title="下一张 (Space / Right Arrow)"><i class="fa-solid fa-chevron-right"></i></button>
             <button class="btn-ctrl" id="fullscreen-btn" title="全屏模式 (F)"><i class="fa-solid fa-expand"></i></button>
         </div>
@@ -3669,7 +3672,7 @@
                 <div class="slide-footer"><div class="slide-footer-left"><span>理解世界</span><span>|</span><span>学会动作</span><span>|</span><span>稳定成功</span></div><div>内部融资资料 - 第3页</div></div>
             </div>
 
-            <!-- SLIDE 4: POSITIONING -->
+            <!-- DISABLED SLIDE 4: POSITIONING
             <div class="slide" id="slide-4">
                 <div class="slide-header"><div class="slide-title-group"><h2><i class="fa-solid fa-layer-group"></i> 我们的定位：不只是机器人公司，更是训练基础设施</h2><div class="slide-subtitle-en">Our Position: The Missing Infrastructure Layer</div></div><div class="slide-logo">LIFT<span>AI</span></div></div>
                 <div class="slide-content">
@@ -3686,6 +3689,7 @@
                 </div>
                 <div class="slide-footer"><div class="slide-footer-left"><span>模型与本体解耦设计</span><span>|</span><span>适配主流Policy框架和工业操作平台</span></div><div>内部融资资料 - 第4页</div></div>
             </div>
+            -->
 
             <!-- SLIDE 5: IN-CONTEXT MID-TRAIN -->
             <div class="slide ic-mid-slide" id="slide-5" data-slide-key="ic-mid-train">
@@ -3742,7 +3746,7 @@
                         <div class="ic-mid-gain" style="--gain-color:#eab308;"><b>↓</b><div><strong>增量训练复杂度</strong><span>减少逐任务采集与微调</span></div></div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>Context = Task Interface</span><span>|</span><span>少样本适应</span><span>|</span><span>产线快速切换</span></div><div>内部融资资料 - 第9页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>Context = Task Interface</span><span>|</span><span>少样本适应</span><span>|</span><span>产线快速切换</span></div><div>内部融资资料 - 第8页</div></div>
             </div>
 
             <!-- SLIDE 6: IN-CONTEXT RESEARCH EVIDENCE -->
@@ -3789,7 +3793,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>In-Context Imitation Learning</span></div><div>内部融资资料 - 第10页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>In-Context Imitation Learning</span></div><div>内部融资资料 - 第9页</div></div>
             </div>
 
             <!-- NEW DATA PARADIGM: VIBEDEMO -->
@@ -3824,7 +3828,7 @@
                             <div class="vibedemo-steps">
                                 <div class="vibedemo-step">
                                     <div class="vibedemo-step-number">01</div>
-                                    <div><strong>低成本中训练，快速达到 70–80%</strong><p>先用规模化 VibeDemo 建立可用的泛化能力，再用高质量真机数据与后训练将成功率推向生产级 100%。</p></div>
+                                    <div><strong>低成本中训练，快速达到 70%–80%</strong><p>先用规模化 VibeDemo 建立可用的泛化能力，再用高质量真机数据与后训练将成功率推向生产级 100%。</p></div>
                                 </div>
                                 <div class="vibedemo-step">
                                     <div class="vibedemo-step-number">02</div>
@@ -3834,11 +3838,15 @@
                                     <div class="vibedemo-step-number">03</div>
                                     <div><strong>In-Context Reward Model</strong><p>用 VibeDemo 直接定义奖励，无需为新任务单独采集 Reward 微调数据，即可启动后训练 RL，让策略持续 Self-Improve。</p></div>
                                 </div>
+                                <div class="vibedemo-step">
+                                    <div class="vibedemo-step-number">04</div>
+                                    <div><strong>未来：多数据格式共存</strong><p>统一利用 VibeDemo、普通视频、Ego、UMI 等多源数据协同训练，扩大数据规模与场景覆盖，同时提升任务语义和动作理解的准确性。</p></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>任务意图优先</span><span>|</span><span>低成本规模化</span><span>|</span><span>策略自我改进</span></div><div>内部融资资料 - 第11页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>任务意图优先</span><span>|</span><span>低成本规模化</span><span>|</span><span>策略自我改进</span></div><div>内部融资资料 - 第10页</div></div>
             </div>
 
             <!-- DISABLED SLIDE: MID TRAINING
@@ -3882,7 +3890,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>World Model = 数据引擎</span><span>|</span><span>而非单纯的视频生成模型</span></div><div>内部融资资料 - 第5页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>World Model = 数据引擎</span><span>|</span><span>而非单纯的视频生成模型</span></div><div>内部融资资料 - 第4页</div></div>
             </div>
 
             <!-- SLIDE 10: CORE TECHNOLOGY -->
@@ -3953,7 +3961,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>任务专用 World Model</span><span>|</span><span>动力学 + 奖励 + 价值</span><span>|</span><span>真实世界 Model-based RL</span></div><div>内部融资资料 - 第6页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>任务专用 World Model</span><span>|</span><span>动力学 + 奖励 + 价值</span><span>|</span><span>真实世界 Model-based RL</span></div><div>内部融资资料 - 第5页</div></div>
             </div>
 
             <!-- SLIDE 11: CURRENT WORLD MODEL PERFORMANCE -->
@@ -3987,7 +3995,7 @@
                         <div class="wm-performance-card"><div class="wm-performance-row-labels" aria-hidden="true"><span style="--row-color:#38bdf8;">真实视角</span><span style="--row-color:#8b5cf6;">WM预测</span><span style="--row-color:#f59e0b;">差值</span></div><video autoplay loop muted playsinline preload="metadata" aria-label="Autoregressive rollout scenario 10"><source src="./media/wam_ar/ar_09.mp4" type="video/mp4"></video></div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>自回归</span><span>|</span><span>多视角对齐</span><span>|</span><span>物理对齐</span></div><div>内部融资资料 - 第7页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>自回归</span><span>|</span><span>多视角对齐</span><span>|</span><span>物理对齐</span></div><div>内部融资资料 - 第6页</div></div>
             </div>
 
 
@@ -4024,7 +4032,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>缺失能力</span><span>|</span><span>补齐断层</span><span>|</span><span>上下文学习能力</span></div><div>内部融资资料 - 第8页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>缺失能力</span><span>|</span><span>补齐断层</span><span>|</span><span>上下文学习能力</span></div><div>内部融资资料 - 第7页</div></div>
             </div>
 
             <!-- DISABLED SLIDE: EGOCENTRIC DATA ENGINE -->
@@ -4059,7 +4067,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>WM + RL</span><span>|</span><span>长尾操作</span></div><div>内部融资资料 - 第12页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>WM + RL</span><span>|</span><span>长尾操作</span></div><div>内部融资资料 - 第11页</div></div>
             </div>
 
             <!-- SLIDE 13: DEPLOYMENT RESULT -->
@@ -4149,7 +4157,7 @@
                         <span>|</span>
                         <span>商业价值</span>
                     </div>
-                    <div>内部融资资料 - 第13页</div>
+                    <div>内部融资资料 - 第12页</div>
                 </div>
             </div>
 
@@ -4192,7 +4200,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>Lift-0</span><span>|</span><span>双臂机器人平台</span><span>|</span><span>真实场景部署</span></div><div>内部融资资料 - 第14页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>Lift-0</span><span>|</span><span>双臂机器人平台</span><span>|</span><span>真实场景部署</span></div><div>内部融资资料 - 第13页</div></div>
             </div>
 
             <!-- DEPLOYMENT SCENARIOS -->
@@ -4244,7 +4252,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>灵活操作</span><span>|</span><span>多场景复用</span><span>|</span><span>规模化落地</span></div><div>内部融资资料 - 第15页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>灵活操作</span><span>|</span><span>多场景复用</span><span>|</span><span>规模化落地</span></div><div>内部融资资料 - 第14页</div></div>
             </div>
 
             <!-- SLIDE 14: CUSTOMER WORKFLOW -->
@@ -4343,7 +4351,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>全栈交付</span><span>|</span><span>年度软件许可</span><span>|</span><span>新工艺增值</span><span>|</span><span>OEM 开放</span></div><div>内部融资资料 - 第16页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>全栈交付</span><span>|</span><span>年度软件许可</span><span>|</span><span>新工艺增值</span><span>|</span><span>OEM 开放</span></div><div>内部融资资料 - 第15页</div></div>
             </div>
 
 
@@ -4402,7 +4410,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>技术创始人与市场需求高度契合</span><span>|</span><span>具身智能 AI Infra</span></div><div>内部融资资料 - 第17页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>技术创始人与市场需求高度契合</span><span>|</span><span>具身智能 AI Infra</span></div><div>内部融资资料 - 第16页</div></div>
             </div>
 
             <!-- SLIDE 17: FUNDING -->
@@ -4421,7 +4429,7 @@
                     
                     <div class="budget-list-item" style="--accent:#ef4444;"><div><div class="budget-item-title"><span class="budget-item-num">05</span>其他</div><span class="budget-item-sub">未承诺储备：法务、知识产权、行政、差旅及运营储备等</span></div><div class="budget-item-value"><span class="budget-item-pct">15%</span><span class="budget-item-amount">300 万元</span></div></div></div></div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>资本高效扩张</span><span>|</span><span>基础设施优先投入</span></div><div>内部融资资料 - 第18页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>资本高效扩张</span><span>|</span><span>基础设施优先投入</span></div><div>内部融资资料 - 第17页</div></div>
             </div>
 
             <!-- SLIDE 18: ROADMAP -->
@@ -4506,7 +4514,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide-footer"><div class="slide-footer-left"><span>全周期并行推进</span><span>|</span><span>客户共创</span><span>|</span><span>数据闭环</span><span>|</span><span>系统产品化</span></div><div>内部融资资料 - 第19页</div></div>
+                <div class="slide-footer"><div class="slide-footer-left"><span>全周期并行推进</span><span>|</span><span>客户共创</span><span>|</span><span>数据闭环</span><span>|</span><span>系统产品化</span></div><div>内部融资资料 - 第18页</div></div>
             </div>
 
             <!-- DISABLED SLIDE: INVESTMENT HIGHLIGHTS -->
@@ -4540,6 +4548,10 @@
 
     <!-- PPT INTERACTIVE SCRIPTS -->
     <script>
+        if (new URLSearchParams(window.location.search).get('export') === 'pdf') {
+            document.body.classList.add('export-mode');
+        }
+
         // Keep the source sections maintainable while presenting the in-context
         // Mid-Train narrative immediately after the World Model evidence pages.
         const icMidTrainSlide = document.querySelector('[data-slide-key="ic-mid-train"]');
